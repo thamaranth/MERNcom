@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import App from '../App'
+import Objective from './Objective'
 
 export default class MissionPage extends Component {
 
@@ -8,7 +9,7 @@ export default class MissionPage extends Component {
       <div>
         {App}
         <h1> You deserve the world </h1>
-        {this.props.children}
+        <Objective />
       </div>
     )}
   }

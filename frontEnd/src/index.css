@@ -3,3 +3,10 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.objective {
+  border: ridge black 1px;
+  width: 100px;
+  background-color: black;
+  color: white;
+}
