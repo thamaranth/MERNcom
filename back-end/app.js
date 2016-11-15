@@ -35,12 +35,12 @@ app.use( ( request, respond, next ) => {
 // error handler
 app.use( ( error, request, response, next ) => {
   // set locals, only providing error in development
-  response.locals.message = err.message;
+  response.locals.message = error.message;
   response.locals.error = request.app.get('env') === 'development' ? error : {};
 
   // render the error page
-  response.status( error.status || 500 );
-  response.render( 'error' );
+  response.status( error.status || 500 )
+  .json({ status: error.status || 500, message: error })
 });
 
 module.exports = app;
