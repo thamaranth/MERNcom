@@ -6,6 +6,7 @@ router.get('/', ( request, response, next ) => {
   response.send( 'respond with a resource' )
 })
 
-router.post( '/addcampaign', campaignHandler.add )
+router.post( '/campaign', campaignHandler.add )
+router.get( '/campaign', campaignHandler.getAll )
 
 module.exports = router

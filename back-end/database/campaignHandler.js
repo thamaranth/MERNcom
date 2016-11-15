@@ -10,10 +10,10 @@ const campaignHandler = {
     console.log('Begining add new campaign function.')
 
     const objective_1 = new Objective({ description: 'Click this.', damage: 3 })
-    console.log('Created new objective_1', objective_1)
+    console.log('Created new objective_1')
 
     const objective_2 = new Objective({ description: 'Click this too.', damage: 4 })
-    console.log('created objective_2', objective_2)
+    console.log('created objective_2')
 
     objective_1.save()
     objective_2.save()
@@ -22,7 +22,7 @@ const campaignHandler = {
     console.log('Creating mission...');
 
     const mission_1 = new Mission({ name: 'Mission One', boss_name: 'Ze Lt', boss_hp: 15, objectives: [ objective_1, objective_2 ] })
-    console.log('created mission: ', mission_1 );
+    console.log('created mission: ' );
 
     mission_1.save()
     console.log( 'Mission saved.')
@@ -32,6 +32,12 @@ const campaignHandler = {
   },
 
   getAll: ( request, response, next ) => {
+    Campaign.find( {}, ( error, data ) => { error ? console.log( error ) : console.log('Success') } )
+    .then( data => {
+        const currentdate = new Date()
+        console.log(`Retrieved campaign from database: ${data.length} items ---- ${currentdate}`)
+        response.status(200).json({ status: 'success', data: data, message: 'Retrieved campaign.' })
+      })
 
   },
 
