@@ -17,8 +17,8 @@ const campaignHandler = {
 
     objective_1.save()
     objective_2.save()
-    console.log('Objectives saved.')
 
+    console.log('Objectives saved.')
     console.log('Creating mission...');
 
     const mission_1 = new Mission({ name: 'Mission One', boss_name: 'Ze Lt', boss_hp: 15, objectives: [ objective_1, objective_2 ] })
@@ -29,6 +29,7 @@ const campaignHandler = {
 
     const campaign = new Campaign({ name: 'Campaign Three', boss_name: 'Diablo', boss_hp: 200, missions: [ mission_1 ] })
     campaign.save()
+    console.log( 'Campaign saved to database.' )
   },
 
   getAll: ( request, response, next ) => {

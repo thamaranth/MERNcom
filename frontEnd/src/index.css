@@ -5,3 +5,10 @@ body {
   background-color: #222;
   color: white;
 }
+
+.objective {
+  border: ridge black 1px;
+  width: 100px;
+  background-color: black;
+  color: white;
+}
