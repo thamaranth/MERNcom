@@ -1,0 +1,51 @@
+
+
+{
+  name: 'Campaign One',
+  boss_name: 'El Capitan',
+  boss_hp: 15,
+  isComplete: false,
+    missions: [{
+        name: 'Mission One',
+        boss_name: 'First Lt',
+        boss_hp: 10,
+        isComplete: false,
+          objectives: [
+            {
+              description: 'Click this objective to mark as complete.',
+              damage: 3,
+              isComplete: false
+          }, {
+              decription: 'Click this objective to mark as complete.',
+              damage: 2,
+              isComplete: false
+          }, {
+              decription: 'Click this objective to mark as complete.',
+              damage: 2,
+              isComplete: false
+          }
+        ]},
+
+        {
+      name: 'Mission Two',
+      boss_name: 'Second Lt',
+      boss_hp: 10,
+      isComplete: false,
+      objectives: [
+        {
+          description: 'Click this objective to mark as complete.',
+          damage: 3,
+          isComplete: false
+        }, {
+          decription: 'Click this objective to mark as complete.',
+          damage: 2,
+          isComplete: false
+        }, {
+          decription: 'Click this objective to mark as complete.',
+          damage: 2,
+          isComplete: false
+        }]
+      }
+    ]
+
+}

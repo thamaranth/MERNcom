@@ -33,7 +33,7 @@ app.use( ( request, respond, next ) => {
 });
 
 // error handler
-app.use(f ( error, request, response, next ) => {
+app.use( ( error, request, response, next ) => {
   // set locals, only providing error in development
   response.locals.message = err.message;
   response.locals.error = request.app.get('env') === 'development' ? error : {};
