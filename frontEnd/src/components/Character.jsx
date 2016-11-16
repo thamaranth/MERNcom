@@ -38,12 +38,11 @@ export default class Character extends Component {
 
   render() {
     return (
-      <div>
-        <div className='character'>
-          <div>
-            <div>{this.state.name}</div>
-            <div>{this.state.hp}</div>
-            <img src={this.state.img_url} alt="Hi" />
+      <div className='character kate-winslet'>
+        <div className='character-stats'>
+          <div>{this.state.name}</div>
+          <div>HP
+            <div className="character-hp">{this.state.hp}</div>
           </div>
         </div>
         <div className="campaign-list">

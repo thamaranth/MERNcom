@@ -9,7 +9,7 @@ export default class CampaignPage extends Component {
       <div>
         {/* {App} */}
         <h1> You deserve the world </h1>
-        <div className="campaign-list">
+        <div>
           <h4>
             <Link to="/campaign-1">Campaign 1</Link>
           </h4>
