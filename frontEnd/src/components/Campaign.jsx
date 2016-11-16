@@ -6,8 +6,7 @@ export default class Campaign extends Component {
     super( props )
     this.state = {
       name: '',
-      missions: [],
-      missionNames: []
+      missionLinks: []
     }
   }
 
@@ -27,17 +26,18 @@ export default class Campaign extends Component {
     fetch( 'http://localhost:4001/campaign', fetchIsHappenning )
     .then( data => data.json() )
     .then( data => {
-      const missions = []
-      const missionNames = []
+
+      const missionLinks = []
       const campaign = data.data[0]
+
       this.setState({ name: campaign.name })
 
       for (let i = 0; i < campaign.missions.length; i++) {
-        missions.push( campaign.missions[i] )
-        missionNames.push( campaign.missions[i].name )
+        /*TODO: make mission link dynamic*/
+        const mission = <div className="link"><Link to="/character/:character/:campaign/:mission">{campaign.missions[i].name}</Link></div>
+        missionLinks.push( mission )
       }
-      this.setState({ missions })
-      this.setState({ missionNames })
+      this.setState({ missionLinks })
       // console.log(this.state.missionNames)
 
       })
@@ -48,7 +48,7 @@ export default class Campaign extends Component {
       <div className="campaign">
         <div className="campaign-title"><h3>{this.state.name}</h3></div>
         <div className="mission-list">
-          <Link to="/campaign-1/mission-1">{this.state.missionNames[0]}</Link>
+          {this.state.missionLinks.map( mission => mission )}
         </div>
       </div>
     )

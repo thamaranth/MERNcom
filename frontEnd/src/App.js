@@ -6,6 +6,7 @@ import { Link } from "react-router"
 
 class App extends Component {
   render() {
+    const { main, sidebar } = this.props
     return (
       <div className="App">
         <div className="App-header">
@@ -14,12 +15,18 @@ class App extends Component {
           <h3>You are now entering the game</h3>
         </div>
         <div>
-        </div>
-        <div>
-          <p className="App-intro">
+          <div className="App-intro">
             You have started <Link to="/CharacterSelect"> <code>the.future</code> </Link> and reloaded
-            {this.props.children}
-          </p>
+            <div className='container'>
+              {this.props.children}
+              <div className='main'>
+                {main}
+              </div>
+              <div className='sidebar'>
+                {sidebar}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
         );

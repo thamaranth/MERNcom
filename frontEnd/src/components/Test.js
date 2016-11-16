@@ -11,13 +11,11 @@ class Test extends Component {
           <img src={logo} className="App-logo" alt="logo" />
             <h2>The World is Ours</h2>
                 </div>
-                <div>
-              </div>
             <p className="App-intro">
         </p>
       </div>
-    );
+    )
   }
 }
 
-export default Test;
+export default Test

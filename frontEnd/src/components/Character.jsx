@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import CampaignPage from './CampaignPage'
+import StagePage from './pages/StagePage'
 
 export default class Character extends Component {
   constructor( props ) {
@@ -39,14 +40,14 @@ export default class Character extends Component {
   render() {
     return (
       <div className='character kate-winslet'>
+        <div className="list">
+          {this.props.children}
+        </div>
         <div className='character-stats'>
           <div>{this.state.name}</div>
           <div>HP
             <div className="character-hp">{this.state.hp}</div>
           </div>
-        </div>
-        <div className="campaign-list">
-          <CampaignPage />
         </div>
       </div>
     )
