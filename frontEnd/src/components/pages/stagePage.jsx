@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import Campaign from '../Campaign'
 import Mission from '../Mission'
 import Character from '../Character'
-import CharacterSelect from './CharacterSelect'
 import CampaignPage from '../CampaignPage'
 
 

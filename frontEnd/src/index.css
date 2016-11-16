@@ -39,10 +39,24 @@ body {
 .objective {
   border: ridge black 1px;
   width: 100px;
+  background-color: white;
+  color: black;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+}
+
+.objective-complete {
+  /*TODO: fix image sizing */
+  background-image: url('http://4.bp.blogspot.com/-ohqlppNJIHo/UBGGVo9rTcI/AAAAAAAAAGA/ANMtDcu5dDw/s1600/comp.jpg');
+  background-size: contain;
+  border: ridge black 1px;
+  width: 100px;
   background-color: #221;
   color: white;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 10px;
 }
 
 .character {
@@ -60,7 +74,7 @@ body {
   display: flex;
   justify-content: space-between;
   border: solid black 2px;
-  background-color: rgba(147, 7, 7, 0.76);
+  background-color: rgba(9, 35, 101, 0.65);
   width: 200px;
   height: 100px;
   order: 2;
@@ -102,6 +116,7 @@ body {
   justify-content: center;
   align-items: center;
   background-color: grey;
+  margin-top: 10px;
 }
 
 /*.campaign-list {
@@ -113,17 +128,6 @@ body {
   width: 400px;
 }*/
 
-.objective-complete {
-  /*TODO: fix image sizing */
-  background-image: url('http://4.bp.blogspot.com/-ohqlppNJIHo/UBGGVo9rTcI/AAAAAAAAAGA/ANMtDcu5dDw/s1600/comp.jpg');
-  background-size: contain;
-  border: ridge black 1px;
-  width: 100px;
-  background-color: #221;
-  color: white;
-  margin-left: auto;
-  margin-right: auto;
-}
 
 .campaign-list {
   display: flex;
