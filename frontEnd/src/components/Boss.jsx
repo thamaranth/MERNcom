@@ -40,7 +40,8 @@ export default class Boss extends Component {
   render() {
     return (
     <div className='boss-container'>
-      {this.state.boss_name}
+      {this.props.boss_name}
+      {this.props.boss_hp}
     </div>
     )
   }
