@@ -3,15 +3,15 @@ const Objective = require( './models/ObjectiveModel' )
 
 const objectiveHandler ={
 
-  add: ( request, response, next ) => {
-    const { description, damage } = request.body
+  add: ( description, damage ) => {
     const objective = new Objective({ description: description, damage: damage })
     objective.save()
     return objective
   },
 
   getAll: ( request, response, next ) => {
-
+    Objective.find()
+    .then( objectives => response.send( objectives ))
   },
 
   getOne: ( request, response, next ) => {
