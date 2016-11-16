@@ -6,9 +6,66 @@ body {
   color: white;
 }
 
+.mission {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2em;
+  display: flex;
+  }
+
 .objective {
   border: ridge black 1px;
   width: 100px;
-  background-color: black;
+  background-color: #221;
   color: white;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.character {
+  border: solid red 1px;
+  width: 200px;
+}
+
+.objective-complete {
+  /*TODO: fix image sizing */
+  background-image: url('http://4.bp.blogspot.com/-ohqlppNJIHo/UBGGVo9rTcI/AAAAAAAAAGA/ANMtDcu5dDw/s1600/comp.jpg');
+  background-size: contain;
+  border: ridge black 1px;
+  width: 100px;
+  background-color: #221;
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.campaign-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+* {
+  /*border: solid red 1px;*/
+  positon: relative;
+}
+
+.boss-container {
+  animation: boss-container-spin infinite 10s linear;
+  background-color: red;
+  height: 60px;
+  width: 100px;
+  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@keyframes boss-container-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
 }

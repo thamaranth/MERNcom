@@ -17,11 +17,11 @@ class App extends Component {
         </div>
         <div>
           <p className="App-intro">
-            You have started <Link to="MissionPage"> <code>the.future</code> </Link> and reloaded
+            You have started <Link to="/CharacterSelect"> <code>the.future</code> </Link> and reloaded
             {this.props.children}
           </p>
         </div>
-        </div>
+      </div>
         );
         }
 }
