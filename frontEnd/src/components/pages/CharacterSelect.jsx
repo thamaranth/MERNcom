@@ -26,7 +26,7 @@ export default class CharacterSelect extends Component {
       console.log('CHARACTER', data.data[0])
       const r_character = data.data[0]
 
-      const characterLink = <Link to="/Kate">{r_character.name}</Link>
+      const characterLink = <div className="character-link kate-winslet"><Link to="/character/Kate">{r_character.name}</Link></div>
 
       characterLinks.push( characterLink )
       this.setState({ characterLinks })
@@ -38,7 +38,7 @@ export default class CharacterSelect extends Component {
   render() {
     return (
       <div>
-        <div>
+        <div className="list">
           {this.state.characterLinks.map( character => character )}
             </div>
       </div>
