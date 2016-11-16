@@ -3,6 +3,7 @@ const Campaign = require( './models/CampaignModel' )
 const Mission = require( './models/MissionModel' )
 const Objective = require( './models/ObjectiveModel' )
 const Character = require( './models/CharacterModel' )
+const objectiveHandler = require('./objectiveHandler')
 
 const characterHandler = {
 
