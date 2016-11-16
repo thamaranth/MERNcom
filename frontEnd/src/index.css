@@ -24,8 +24,44 @@ body {
 }
 
 .character {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
   border: solid red 1px;
+  width: 90%;
+  height: 1000px;
+  display: flex;
+  z-index: 100;
+}
+
+.character-stats {
+  display: flex;
+  justify-content: space-between;
+  border: solid black 2px;
+  background-color: rgba(147, 7, 7, 0.76);
   width: 200px;
+  height: 100px;
+  order: 2;
+}
+
+.kate-winslet {
+  background-image: url('https://downloads.2kgames.com/xcom2/blog_images/retaliation.jpg');
+  background-size: cover;
+}
+
+.character-hp {
+  border-top: solid black 3px;
+  margin-top: 10px;
+}
+
+.campaign-link {
+  border: solid black 5px;
+}
+
+.campaign-list {
+  background-color: rgba(255, 255, 255, 0.62);
+  color: black;
+  order: 1;
 }
 
 .objective-complete {
