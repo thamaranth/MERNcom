@@ -1,8 +1,18 @@
 import React, { Component } from 'react'
-import App from '../App'
 import {Link} from 'react-router'
 
 export default class CampaignPage extends Component {
+  constructor( props ) {
+    super( props )
+    this.state = {
+      name: '',
+      characterName: ''
+    }
+  }
+
+  componentDidMount() {
+
+  }
 
   render(){
     return (

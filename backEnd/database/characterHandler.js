@@ -23,12 +23,14 @@ const characterHandler = {
     console.log('Creating mission...');
 
     const mission_1 = new Mission({ name: 'Mission One', boss_name: 'Ze Lt', boss_hp: 15, objectives: [ objective_1, objective_2 ] })
+    const mission_2 = new Mission({ name: 'Mission Two', boss_name: 'Trump', boss_hp: 15, objectives: [ objective_1, objective_2 ] })
     console.log('created mission: ' );
 
     mission_1.save()
+    mission_2.save()
     console.log( 'Mission saved.')
 
-    const campaign = new Campaign({ name: 'Campaign Three', boss_name: 'Diablo', boss_hp: 200, missions: [ mission_1 ] })
+    const campaign = new Campaign({ name: 'Campaign One', boss_name: 'Diablo', boss_hp: 200, missions: [ mission_1, mission_2 ] })
     campaign.save()
     console.log( 'Campaign saved to database.' )
 
