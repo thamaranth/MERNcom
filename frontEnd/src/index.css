@@ -141,10 +141,12 @@ body {
 }
 
 .boss-container {
-  animation: boss-container-spin infinite 10s linear;
-  background-color: red;
-  height: 60px;
-  width: 100px;
+  animation: boss-container-spin infinite 0s linear;
+  background-image: url('http://ih1.redbubble.net/image.207507018.0948/fc,220x200,black.u1.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 150px;
+  width: 150px;
   margin: auto;
   margin-left: auto;
   margin-right: auto;
