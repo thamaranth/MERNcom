@@ -5,7 +5,7 @@ const CampaignModel = db.model( "Campaign", {
 
   name: { type: String },
   character: { type: String },
-  status: { type: String, default: 'locked' },
+  locked: { type: Boolean, default: true },
   isComplete: { type: Boolean, default: false },
   missions: [ MissionModel.schema ] || []
 

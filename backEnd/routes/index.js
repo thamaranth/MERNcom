@@ -8,10 +8,13 @@ router.get('/', ( request, response, next ) => {
   response.send( 'respond with a resource' )
 })
 
-router.post( '/campaign', campaignHandler.add )
 router.get( '/campaign', campaignHandler.getAll )
 
-router.post( '/character/addcampaign', characterHandler.addCampaign )
+router.post( '/character/createcampaign', characterHandler.campaign.create )
+router.post( '/character/addcampaign', characterHandler.campaign.addToCharacter )
+router.put( '/character/unlockcampaign', characterHandler.campaign.unlock )
+router.put( '/character/lockcampaign', characterHandler.campaign.lock )
+
 router.post( '/character', characterHandler.add )
 router.get( '/character', characterHandler.getAll )
 
