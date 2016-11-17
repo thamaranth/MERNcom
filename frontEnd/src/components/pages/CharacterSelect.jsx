@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Character from '../Character'
 import {Link} from 'react-router'
 
 export default class CharacterSelect extends Component {
@@ -19,14 +18,16 @@ export default class CharacterSelect extends Component {
       })
     }
 
-    fetch( 'http://localhost:4001/character', fetchIsHappenning )
+    fetch( 'http://localhost:3001/character', fetchIsHappenning )
     .then( data => data.json() )
     .then( data => {
       const characterLinks = []
-      console.log('CHARACTER', data.data[0])
-      const r_character = data.data[0]
+      console.log('CHARACTER', data.data)
+      const character = data.data[0]
 
-      const characterLink = <div className="character-link kate-winslet"><Link to="/character/Kate">{r_character.name}</Link></div>
+      // for ( let i = 0; i < character )
+
+      const characterLink = <div className="character-link kate-winslet"><Link to="/character/Kate">{character.name}</Link></div>
 
       characterLinks.push( characterLink )
       this.setState({ characterLinks })

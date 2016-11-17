@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import CampaignPage from './CampaignPage'
-import StagePage from './pages/StagePage'
 
 export default class Character extends Component {
   constructor( props ) {
@@ -22,7 +20,7 @@ export default class Character extends Component {
       'Accept': 'application/json'
       })
     }
-    fetch( 'http://localhost:4001/character', fetchIsHappenning )
+    fetch( 'http://localhost:3001/character', fetchIsHappenning )
     .then( data => data.json() )
     .then( data => {
       const character = data.data[0]

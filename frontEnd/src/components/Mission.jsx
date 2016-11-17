@@ -25,7 +25,7 @@ export default class Mission extends Component {
 
     console.log( 'Making AJAX call to database...' )
 
-    fetch( 'http://localhost:4001/campaign', fetchIsHappenning )
+    fetch( 'http://localhost:3001/campaign', fetchIsHappenning )
     .then( data => data.json() )
     .then( data => {
       const objectives = []

@@ -22,7 +22,7 @@ export default class Boss extends Component {
       'Accept': 'application/json'
       })
     }
-    fetch( 'http://localhost:4001/campaign', fetchIsHappenning )
+    fetch( 'http://localhost:3001/campaign', fetchIsHappenning )
     .then( data => data.json() )
     .then( data => {
       const missions = data.data[0].missions
