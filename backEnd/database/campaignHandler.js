@@ -15,9 +15,8 @@ const campaignHandler = {
 
   },
 
-
   getCampaign: ( campaignArray, campaignName ) => {
-
+    let campaign = {}
     for ( let i=0; i < campaignArray.length; i++ ) {
 
       if( campaignArray[i].name === campaignName ) {
@@ -30,6 +29,17 @@ const campaignHandler = {
 }
 
 const missionHandler = {
+
+  getMission: ( missionArray, missionName ) => {
+    let mission = {}
+    for ( let i=0; i < missionArray.length; i++ ) {
+
+      if( missionArray[i].name === missionName ) {
+        mission = missionArray[i]
+      }
+    }
+    return mission
+  }
 
 }
 
@@ -59,4 +69,4 @@ const objectiveHandler = {
   }
 }
 
-module.exports = campaignHandler
+module.exports = { campaignHandler, missionHandler, objectiveHandler }

@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const campaignHandler = require('../database/campaignHandler')
+const {campaignHandler} = require('../database/campaignHandler')
 const characterHandler = require('../database/characterHandler')
 const objectiveHandler = require( '../database/objectiveHandler' )
 
@@ -14,6 +14,10 @@ router.post( '/character/createcampaign', characterHandler.campaign.create )
 router.post( '/character/addcampaign', characterHandler.campaign.addToCharacter )
 router.put( '/character/unlockcampaign', characterHandler.campaign.unlock )
 router.put( '/character/lockcampaign', characterHandler.campaign.lock )
+
+router.post( '/character/campaign/mission/create', characterHandler.mission.create )
+
+router.post( '/character/campaign/mission/objective/create', characterHandler.objective.create )
 
 router.post( '/character', characterHandler.add )
 router.get( '/character', characterHandler.getAll )

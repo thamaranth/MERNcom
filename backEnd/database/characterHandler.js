@@ -3,8 +3,8 @@ const Campaign = require( './models/CampaignModel' )
 const Mission = require( './models/MissionModel' )
 const Objective = require( './models/ObjectiveModel' )
 const Character = require( './models/CharacterModel' )
-const objectiveHandler = require( './objectiveHandler' )
-const campaignHandler = require( './campaignHandler' )
+// const objectiveHandler = require( './objectiveHandler' )
+const { campaignHandler, missionHandler, objectiveHandler } = require( './campaignHandler' )
 
 const characterHandler = {
 
@@ -117,8 +117,8 @@ const characterHandler = {
         const mission = new Mission({ name: missionName, boss_name: bossName, boss_hp: bossHp })
         campaign.missions.push( mission )
         character.save()
-
       })
+      .then( response.status( 200 ).json({ status: 'success', message: `Created mission '${missionName}' in campaign '${campaignName}' for ${characterName}.` }) )
     },
 
     addToCampaign: ( request, response, next ) => {
@@ -127,6 +127,26 @@ const characterHandler = {
 
     completeMission: ( request, response, next ) => {
 
+    }
+  },
+
+  objective: {
+
+    create: ( request, response, next ) => {
+      const { characterName, campaignName, missionName, objectiveName, description, damage } = request.body
+
+      Character.find({ name: characterName })
+      .then( raw_character => {
+
+        const character = raw_character[0]
+        const campaign = campaignHandler.getCampaign( character.campaigns, campaignName )
+        const mission = missionHandler.getMission( campaign.missions, missionName )
+
+        const objective = new Objective({ description: description, damage: damage })
+        mission.objectives.push( objective )
+        character.save()
+      })
+      .then( response.status( 200 ).json({ status: 'success', message: `Create new objective in '${missionName}'.` }) )
     }
   }
 
