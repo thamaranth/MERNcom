@@ -65,7 +65,6 @@ const characterHandler = {
       Character.find({ name: charName })
       .then( raw_character => {
         const character = raw_character[0]
-        console.log("CHAR:", character)
         const campaign = campaignHandler.getCampaign( character.campaigns, campaignName )
         response.status( 200 ).json({ status: 'success', data: campaign, message: `Retrieved campaign '${campaignName}'.` })
       })
@@ -149,7 +148,6 @@ const characterHandler = {
 
         const campaign = campaignHandler.getCampaign( character.campaigns, campaignName )
         const mission = missionHandler.getMission( campaign.missions, missionName )
-        console.log('MISSION: ', mission)
         response.status(200).json({ status: 'success', data: mission, message: 'Yay.' })
       })
     },
