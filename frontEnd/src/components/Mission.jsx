@@ -34,7 +34,7 @@ export default class Mission extends Component {
       this.setState({ name: mission.name })
 
       for( let i = 0; i < mission.objectives.length; i++) {
-        const objective = <Objective description={mission.objectives[i].description} damage={mission.objectives[i].damage} id={mission.objectives[i]._id} />
+        const objective = <Objective description={mission.objectives[i].description} damage={mission.objectives[i].damage} isComplete={mission.objectives[i].isComplete} id={mission.objectives[i]._id} />
           objectives.push( objective )
             }
       this.setState({ objectives })
@@ -46,9 +46,10 @@ export default class Mission extends Component {
 
   }
 
+
   render() {
     const obj1 = this.state.objectives
-    console.log('OBJ', obj1 )
+
     // const obj1_description = obj1.description
     // const obj1_damage = obj1.damage
 
@@ -56,10 +57,8 @@ export default class Mission extends Component {
       <div className="mission">
         <div className="objective-container">
           {obj1.map( ( objective ) => <div key={ objective._id} > {objective} </div> )}
-        </div>
-        <div className='boss-container'>
-          <Boss />
           </div>
+          {Objective}
         </div>
 
     )

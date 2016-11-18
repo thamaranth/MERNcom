@@ -9,10 +9,11 @@ export default class Boss extends Component {
       boss_name: '',
       boss_hp: 0,
       img_url: '',
-      alive: this.props.alive || true
+      status: ''
 
     }
   }
+
 
   componentDidMount() {
 
@@ -39,7 +40,7 @@ export default class Boss extends Component {
 
   render() {
     return (
-    <div className='boss-container'>
+    <div>
       {this.props.boss_name}
       {this.props.boss_hp}
     </div>

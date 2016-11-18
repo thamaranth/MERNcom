@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Boss from './Boss'
 
 export default class Objective extends Component {
   constructor( props ) {
@@ -10,7 +11,19 @@ export default class Objective extends Component {
       id: this.props.id,
       status: 'objective'
     }
+    this.clickHandler= this.clickHandler.bind(this)
   }
+
+  damageHandler() {
+
+    if ( this.state.isComplete === false ){
+      return 'boss-container'
+    } else {
+      return 'damage'
+    }
+
+  }
+
 
   clickHandler() {
 
@@ -23,12 +36,18 @@ export default class Objective extends Component {
   }
 
   render() {
+    console.log("Lets do another test:" , this.state.isComplete)
+    console.log("this shiz is weird", this.damageHandler())
     return (
-      <div className={this.state.status} onClick={this.clickHandler.bind(this)} id={this.state.id}>
-
+      <div>
+      <div className={this.state.status} onClick={this.clickHandler} id={this.state.id}>
         <h5>{this.state.description}</h5>
         <h5>{this.state.damage}</h5>
       </div>
+      <div className={this.damageHandler()}>
+        <Boss />
+      </div>
+    </div>
     )
   }
 }
