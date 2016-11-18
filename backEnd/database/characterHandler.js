@@ -19,13 +19,20 @@ const characterHandler = {
     Character.find( {}, ( error, data ) => { error ? console.log( error ) : console.log('Success') } )
     .then( data => {
         const currentdate = new Date()
-        console.log(`Retrieved campaign from database: ${data.length} items ---- ${currentdate}`)
+        console.log(`Retrieved character from database: ${data.length} items ---- ${currentdate}`)
         response.status(200).json({ status: 'success', data: data, message: 'Retrieved campaign.' })
       })
 
   },
 
   getOne: ( request, response, next ) => {
+
+    const { name } = request.params
+    Character.find({ name: name }, ( error, data ) => { error ? console.log( error ) : console.log('Success') } )
+    .then( data => {
+      const character = data[0]
+      response.status( 200 ).json({ status: 'success', data: character, message: `Retrieved character '${name}'` })
+    })
 
   },
 

@@ -5,14 +5,26 @@ export default class Character extends Component {
     super( props )
     this.state = {
       id: '',
-      name: '',
+      name: this.props.params.charName,
       hp: 0,
       img_url: '',
-      campaigns: []
+      campaigns: [],
+      css_class: ''
+    }
+  }
+
+  getClassName() {
+    if ( this.state.name === 'Kate Winslet' ) {
+      return 'character kate-winslet'
+    }
+    else if ( this.state.name === 'Macho Man Randy Savage' ) {
+      return 'character macho-man-randy-savage'
     }
   }
 
   componentDidMount() {
+
+    // console.log("NAME: ", this.state.name)
 
     const fetchIsHappenning = {
       method: 'GET', mode: 'cors', headers: new Headers({
@@ -20,24 +32,31 @@ export default class Character extends Component {
       'Accept': 'application/json'
       })
     }
-    fetch( 'http://localhost:3001/character', fetchIsHappenning )
+    const fetchString = `http://localhost:3001/character/${this.state.name}`
+    fetch( fetchString, fetchIsHappenning )
     .then( data => data.json() )
     .then( data => {
+
       const character = data.data[0]
-      console.log(character)
-      this.setState({ id: character._id, name: character.name, hp: character.hp, img_url: character.img_url, campaigns: character.campaigns })
-      console.log("STATE:", this.state.name )
+      console.log('CHAR: ', character)
+
+      // console.log("STATE:", this.state.name )
+
+      let css_class = ''
+
+      if ( this.state.name === 'Kate Winslet' ) {
+        css_class = 'character kate-winslet'
+      }
+      this.setState({ id: character._id, hp: character.hp, img_url: character.img_url, campaigns: character.campaigns, css_class: css_class })
+      // this.setState({ css_class })
     })
-
-
-
-
 
   }
 
   render() {
+    console.log("getting class name:", this.getClassName())
     return (
-      <div className='character kate-winslet'>
+      <div className={ this.getClassName() }>
         <div className="list">
           {this.props.children}
         </div>

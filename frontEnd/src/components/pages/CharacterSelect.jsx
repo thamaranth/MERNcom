@@ -18,18 +18,22 @@ export default class CharacterSelect extends Component {
       })
     }
 
-    fetch( 'http://localhost:3001/character', fetchIsHappenning )
+    fetch( 'http://localhost:3001/characters', fetchIsHappenning )
     .then( data => data.json() )
     .then( data => {
       const characterLinks = []
-      console.log('CHARACTER', data.data)
-      const character = data.data[0]
+      console.log('CHARACTERS: ', data.data)
+      const characters = data.data
 
-      // for ( let i = 0; i < character )
+      characters.forEach( character => {
+        const divClass = `character-link ${character.name}`
+        const linkTo = `/character/${character.name}`
+        const characterLink = <div className={divClass}><Link to={linkTo}>{character.name}</Link></div>
+        characterLinks.push( characterLink )
+      })
 
-      const characterLink = <div className="character-link kate-winslet"><Link to="/character/Kate">{character.name}</Link></div>
+      // const characterLink = <div className="character-link kate-winslet"><Link to="/character/Kate">{character.name}</Link></div>
 
-      characterLinks.push( characterLink )
       this.setState({ characterLinks })
     })
 

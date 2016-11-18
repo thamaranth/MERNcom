@@ -20,7 +20,9 @@ router.post( '/character/campaign/mission/create', characterHandler.mission.crea
 router.post( '/character/campaign/mission/objective/create', characterHandler.objective.create )
 
 router.post( '/character', characterHandler.add )
-router.get( '/character', characterHandler.getAll )
+
+router.get( '/character/:name', characterHandler.getOne )
+router.get( '/characters', characterHandler.getAll )
 
 router.get( '/objectives', objectiveHandler.getAll )
 

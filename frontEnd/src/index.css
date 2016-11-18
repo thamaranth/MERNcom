@@ -96,6 +96,11 @@ body {
   background-size: cover;
 }
 
+.macho-man-randy-savage {
+  background-image: url('http://ll-media.tmz.com/2015/01/12/0112-macho-man-randy-savage-wwe-1200x630.jpg');
+  background-size: cover;
+}
+
 .character-hp {
   border-top: solid black 3px;
   margin-top: 10px;

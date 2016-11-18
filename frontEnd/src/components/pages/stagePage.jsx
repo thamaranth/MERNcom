@@ -12,10 +12,10 @@ export default class Stage extends Component {
       return (
 
         <Router history={browserHistory}>
-        <Route path="/character/:character" component={Character}>
+        <Route path="/character/:charName" component={Character}>
           <IndexRoute component={CampaignPage}></IndexRoute>
-          <Route path="/character/:character/:campaign" component={Campaign}></Route>
-          <Route path="/character/:character/:campaign/:mission" component={Mission}></Route>
+          <Route path="/character/:charName/:campaignName" component={Campaign}></Route>
+          <Route path="/character/:charName/:campaignName/:missionName" component={Mission}></Route>
 
         </Route>
       </Router>
@@ -23,3 +23,5 @@ export default class Stage extends Component {
       )
     }
 }
+
+// component={ () => (<Character />)
