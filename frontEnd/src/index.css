@@ -45,6 +45,13 @@ body {
   margin-right: auto;
   margin-top: 10px;
 }
+.damage {
+  background-image: url('http://newton64.ca/images/videogames/doomguy/doomfuct.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 150px;
+  width: 150px;
+}
 
 .objective-complete {
   /*TODO: fix image sizing */
@@ -58,7 +65,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
-  background-position: center; 
+  background-position: center;
 }
 
 .character {
@@ -143,21 +150,13 @@ body {
 }
 
 .boss-container {
-  animation: boss-container-spin infinite 0s linear;
   background-image: url('http://ih1.redbubble.net/image.207507018.0948/fc,220x200,black.u1.jpg');
   background-size: contain;
   background-repeat: no-repeat;
   height: 150px;
   width: 150px;
-  margin: auto;
-  margin-left: auto;
-  margin-right: auto;
 }
 
-@keyframes boss-container-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
