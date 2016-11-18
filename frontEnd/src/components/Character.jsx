@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
 
 export default class Character extends Component {
   constructor( props ) {
@@ -9,7 +10,7 @@ export default class Character extends Component {
       hp: 0,
       img_url: '',
       campaigns: [],
-      css_class: ''
+      campaign_link: ''
     }
   }
 
@@ -33,22 +34,16 @@ export default class Character extends Component {
       })
     }
     const fetchString = `http://localhost:3001/character/${this.state.name}`
+    console.log('Fetch String: ', fetchString )
     fetch( fetchString, fetchIsHappenning )
     .then( data => data.json() )
     .then( data => {
+      const character = data.data
 
-      const character = data.data[0]
-      console.log('CHAR: ', character)
-
-      // console.log("STATE:", this.state.name )
-
-      let css_class = ''
-
-      if ( this.state.name === 'Kate Winslet' ) {
-        css_class = 'character kate-winslet'
-      }
-      this.setState({ id: character._id, hp: character.hp, img_url: character.img_url, campaigns: character.campaigns, css_class: css_class })
-      // this.setState({ css_class })
+      const linkString = `/character/${this.state.name}/select`
+      const campaignLink = <div className="link"><Link to={linkString}>Campaign Selection</Link></div>
+      this.setState({ id: character._id, hp: character.hp, img_url: character.img_url, campaigns: character.campaigns, campaign_link: campaignLink })
+      console.log(this.state.campaign_link)
     })
 
   }
@@ -60,6 +55,7 @@ export default class Character extends Component {
         <div className="list">
           {this.props.children}
         </div>
+        {this.state.campaign_link}
         <div className='character-stats'>
           <div>{this.state.name}</div>
           <div>HP

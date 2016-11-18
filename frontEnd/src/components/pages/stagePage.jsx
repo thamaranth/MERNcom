@@ -4,6 +4,7 @@ import Campaign from '../Campaign'
 import Mission from '../Mission'
 import Character from '../Character'
 import CampaignPage from '../CampaignPage'
+import OpeningPage from './OpeningPage'
 
 
 export default class Stage extends Component {
@@ -13,7 +14,8 @@ export default class Stage extends Component {
 
         <Router history={browserHistory}>
         <Route path="/character/:charName" component={Character}>
-          <IndexRoute component={CampaignPage}></IndexRoute>
+          <IndexRoute component={OpeningPage}></IndexRoute>
+          <Route path="/character/:charName/select" component={CampaignPage}></Route>
           <Route path="/character/:charName/:campaignName" component={Campaign}></Route>
           <Route path="/character/:charName/:campaignName/:missionName" component={Mission}></Route>
 

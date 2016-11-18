@@ -9,6 +9,7 @@ export default class CharacterSelect extends Component {
     }
   }
 
+
   componentDidMount() {
 
     const fetchIsHappenning = {
@@ -26,19 +27,26 @@ export default class CharacterSelect extends Component {
       const characters = data.data
 
       characters.forEach( character => {
-        const divClass = `character-link ${character.name}`
         const linkTo = `/character/${character.name}`
+        let divClass = ''
+
+        if ( character.name === 'Kate Winslet' ) {
+          divClass = 'character-link kate-winslet'
+        }
+        else if ( character.name === 'Macho Man Randy Savage' ) {
+          divClass = 'character-link macho-man-randy-savage'
+        }
+
         const characterLink = <div className={divClass}><Link to={linkTo}>{character.name}</Link></div>
         characterLinks.push( characterLink )
       })
-
-      // const characterLink = <div className="character-link kate-winslet"><Link to="/character/Kate">{character.name}</Link></div>
-
       this.setState({ characterLinks })
     })
-
-
   }
+
+    getClassName() {
+
+    }
 
   render() {
     return (

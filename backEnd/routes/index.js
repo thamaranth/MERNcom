@@ -11,13 +11,15 @@ router.get('/', ( request, response, next ) => {
 router.get( '/campaign', campaignHandler.getAll )
 
 router.post( '/character/createcampaign', characterHandler.campaign.create )
+
 router.post( '/character/addcampaign', characterHandler.campaign.addToCharacter )
 router.put( '/character/unlockcampaign', characterHandler.campaign.unlock )
 router.put( '/character/lockcampaign', characterHandler.campaign.lock )
 
 router.post( '/character/campaign/mission/create', characterHandler.mission.create )
-
 router.post( '/character/campaign/mission/objective/create', characterHandler.objective.create )
+router.get( '/character/:charName/:campaignName', characterHandler.campaign.getOne )
+router.get ('/character/:charName/:campaignName/:missionName', characterHandler.mission.getOne )
 
 router.post( '/character', characterHandler.add )
 

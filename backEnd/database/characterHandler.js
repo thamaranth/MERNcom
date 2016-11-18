@@ -60,6 +60,17 @@ const characterHandler = {
       .then( response.status( 200 ).json({ status: 'success', message: `Created campaign '${campaignName}' for ${characterName}.` }) )
     },
 
+    getOne: ( request, response, next ) => {
+      const { charName, campaignName } = request.params
+      Character.find({ name: charName })
+      .then( raw_character => {
+        const character = raw_character[0]
+        console.log("CHAR:", character)
+        const campaign = campaignHandler.getCampaign( character.campaigns, campaignName )
+        response.status( 200 ).json({ status: 'success', data: campaign, message: `Retrieved campaign '${campaignName}'.` })
+      })
+    },
+
     addToCharacter: ( request, response, next ) => {
       const { characterName, campaignName } = request.body
       Campaign.find({ name: campaignName })
@@ -119,6 +130,7 @@ const characterHandler = {
       Character.find({ name: characterName })
       .then( raw_character => {
 
+
         const character = raw_character[0]
         const campaign = campaignHandler.getCampaign( character.campaigns, campaignName )
         const mission = new Mission({ name: missionName, boss_name: bossName, boss_hp: bossHp })
@@ -126,6 +138,20 @@ const characterHandler = {
         character.save()
       })
       .then( response.status( 200 ).json({ status: 'success', message: `Created mission '${missionName}' in campaign '${campaignName}' for ${characterName}.` }) )
+    },
+
+    getOne: ( request, response, next ) => {
+      const { charName, campaignName, missionName } = request.params
+
+      Character.find({ name: charName })
+      .then( data => {
+        const character = data[0]
+
+        const campaign = campaignHandler.getCampaign( character.campaigns, campaignName )
+        const mission = missionHandler.getMission( campaign.missions, missionName )
+        console.log('MISSION: ', mission)
+        response.status(200).json({ status: 'success', data: mission, message: 'Yay.' })
+      })
     },
 
     addToCampaign: ( request, response, next ) => {
