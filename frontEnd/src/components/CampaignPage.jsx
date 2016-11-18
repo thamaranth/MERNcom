@@ -5,12 +5,37 @@ export default class CampaignPage extends Component {
   constructor( props ) {
     super( props )
     this.state = {
-      name: '',
-      characterName: ''
+      characterName: this.props.params.charName,
+      campaign_links: []
     }
   }
 
   componentDidMount() {
+
+    const fetchIsHappenning = {
+      method: 'GET', mode: 'cors', headers: new Headers({
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+      })
+    }
+
+    console.log( 'Making AJAX call to database...' )
+
+    const fetchString = `http://localhost:3001/character/${this.state.characterName}`
+    fetch( fetchString, fetchIsHappenning )
+    .then( data => data.json() )
+    .then( data => {
+      const character = data.data
+      const campaigns = character.campaigns
+      const campaign_links = []
+      for ( let i = 0; i < campaigns.length; i++ ) {
+        const linkTo = `/character/${this.state.characterName}/${campaigns[i].name}`
+        const campaignLink = <Link to={linkTo}>{campaigns[i].name}</Link>
+        campaign_links.push( campaignLink )
+      }
+      this.setState({ campaign_links })
+    })
+
 
   }
 
@@ -18,11 +43,9 @@ export default class CampaignPage extends Component {
     return (
       <div>
         <h1> You deserve the world </h1>
-        <div className='campaign-list'>
-          <div className='campaign-link'>
-            <Link to="/character/:character/:campaign">Campaign 1</Link>
+        <div className="link-list">
+            {this.state.campaign_links.map( link => <div className='link'>{link}</div> )}
           </div>
         </div>
-      </div>
     )}
   }

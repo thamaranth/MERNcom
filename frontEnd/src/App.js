@@ -6,7 +6,6 @@ import { Link } from "react-router"
 
 class App extends Component {
   render() {
-    const { main, sidebar } = this.props
     return (
       <div className="App">
         <div className="App-header">

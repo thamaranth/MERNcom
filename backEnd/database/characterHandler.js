@@ -3,55 +3,36 @@ const Campaign = require( './models/CampaignModel' )
 const Mission = require( './models/MissionModel' )
 const Objective = require( './models/ObjectiveModel' )
 const Character = require( './models/CharacterModel' )
+// const objectiveHandler = require( './objectiveHandler' )
+const { campaignHandler, missionHandler, objectiveHandler } = require( './campaignHandler' )
 
 const characterHandler = {
 
   add: ( request, response, next ) => {
-
-    console.log('Begining add new campaign function.')
-
-    const objective_1 = new Objective({ description: 'Click this.', damage: 3 })
-    console.log('Created new objective_1')
-
-    const objective_2 = new Objective({ description: 'Click this too.', damage: 4 })
-    console.log('created objective_2')
-
-    objective_1.save()
-    objective_2.save()
-
-    console.log('Objectives saved.')
-    console.log('Creating mission...');
-
-    const mission_1 = new Mission({ name: 'Mission One', boss_name: 'Ze Lt', boss_hp: 15, objectives: [ objective_1, objective_2 ] })
-    const mission_2 = new Mission({ name: 'Mission Two', boss_name: 'Trump', boss_hp: 15, objectives: [ objective_1, objective_2 ] })
-    console.log('created mission: ' );
-
-    mission_1.save()
-    mission_2.save()
-    console.log( 'Mission saved.')
-
-    const campaign = new Campaign({ name: 'Campaign One', boss_name: 'Diablo', boss_hp: 200, missions: [ mission_1, mission_2 ] })
-    campaign.save()
-    console.log( 'Campaign saved to database.' )
-
-    const character = new Character({ name: 'Kate Winslet', hp: 20, img_url: 'image goes here', campaigns: [ campaign ] })
+    const { name, hp, img_url } = request.body
+    const character = new Character({ name: name, hp: hp, img_url: img_url, campaigns: [] })
     character.save()
-    console.log('Character saved to database.')
-
-    response.status(200).json({message: 'success'})
+    response.status(200).json({ status: 'success', message: 'Inserted new character to database.' })
   },
 
   getAll: ( request, response, next ) => {
     Character.find( {}, ( error, data ) => { error ? console.log( error ) : console.log('Success') } )
     .then( data => {
         const currentdate = new Date()
-        console.log(`Retrieved campaign from database: ${data.length} items ---- ${currentdate}`)
+        console.log(`Retrieved character from database: ${data.length} items ---- ${currentdate}`)
         response.status(200).json({ status: 'success', data: data, message: 'Retrieved campaign.' })
       })
 
   },
 
   getOne: ( request, response, next ) => {
+
+    const { name } = request.params
+    Character.find({ name: name }, ( error, data ) => { error ? console.log( error ) : console.log('Success') } )
+    .then( data => {
+      const character = data[0]
+      response.status( 200 ).json({ status: 'success', data: character, message: `Retrieved character '${name}'` })
+    })
 
   },
 
@@ -61,6 +42,145 @@ const characterHandler = {
 
   delete: ( request, response, next ) => {
 
+  },
+
+
+  campaign: {
+
+    create: ( request, response, next ) => {
+      const { characterName, campaignName } = request.body
+      const campaign = new Campaign({ name: campaignName, character: characterName })
+      campaign.save()
+      Character.find({ name: characterName })
+      .then( raw_character => {
+        const character = raw_character[0]
+        character.campaigns.push( campaign )
+        character.save()
+      })
+      .then( response.status( 200 ).json({ status: 'success', message: `Created campaign '${campaignName}' for ${characterName}.` }) )
+    },
+
+    getOne: ( request, response, next ) => {
+      const { charName, campaignName } = request.params
+      Character.find({ name: charName })
+      .then( raw_character => {
+        const character = raw_character[0]
+        console.log("CHAR:", character)
+        const campaign = campaignHandler.getCampaign( character.campaigns, campaignName )
+        response.status( 200 ).json({ status: 'success', data: campaign, message: `Retrieved campaign '${campaignName}'.` })
+      })
+    },
+
+    addToCharacter: ( request, response, next ) => {
+      const { characterName, campaignName } = request.body
+      Campaign.find({ name: campaignName })
+      .then( campaign => {
+        Character.find({ name: characterName })
+        .then( r_character =>  {
+          const character = r_character[0]
+          character.campaigns.push( campaign[0] )
+          character.save()
+        })
+        .then( response.status(200).json({ status: 'Si', message: 'Pushed campaign into character.' }) )
+      })
+    },
+
+    unlock: ( request, response, next ) => {
+      const { characterName, campaignName } = request.body
+      Character.find({ name: characterName })
+      .then( raw_character => {
+        const character = raw_character[0]
+        let campaign = campaignHandler.getCampaign( character.campaigns, campaignName )
+        campaign.locked = false
+        character.save()
+      })
+      .then( response.status( 200 ).json({ status: 'success', message: `Unlocked campaign ${campaignName}.` }) )
+    },
+
+    lock: ( request, response, next ) => {
+      const { characterName, campaignName } = request.body
+      Character.find({ name: characterName })
+      .then( raw_character => {
+        const character = raw_character[0]
+        let campaign = campaignHandler.getCampaign( character.campaigns, campaignName )
+
+        // for ( let i=0; i<character.campaigns.length; i++ ) {
+        //   if( character.campaigns[i].name === campaignName ) {
+        //     campaign = character.campaigns[i]
+        //   }
+        // }
+
+        campaign.locked = true
+        character.save()
+      })
+      .then( response.status( 200 ).json({ status: 'success', message: `Locked campaign ${campaignName}.` }) )
+    },
+
+    updateName: ( request, response, next ) => {
+      const { characterName, campaignName } = request.body
+
+    }
+  },
+
+  mission: {
+
+    create: ( request, response, next ) => {
+      const { characterName, campaignName, missionName, bossName, bossHp } = request.body
+
+      Character.find({ name: characterName })
+      .then( raw_character => {
+
+
+        const character = raw_character[0]
+        const campaign = campaignHandler.getCampaign( character.campaigns, campaignName )
+        const mission = new Mission({ name: missionName, boss_name: bossName, boss_hp: bossHp })
+        campaign.missions.push( mission )
+        character.save()
+      })
+      .then( response.status( 200 ).json({ status: 'success', message: `Created mission '${missionName}' in campaign '${campaignName}' for ${characterName}.` }) )
+    },
+
+    getOne: ( request, response, next ) => {
+      const { charName, campaignName, missionName } = request.params
+
+      Character.find({ name: charName })
+      .then( data => {
+        const character = data[0]
+
+        const campaign = campaignHandler.getCampaign( character.campaigns, campaignName )
+        const mission = missionHandler.getMission( campaign.missions, missionName )
+        console.log('MISSION: ', mission)
+        response.status(200).json({ status: 'success', data: mission, message: 'Yay.' })
+      })
+    },
+
+    addToCampaign: ( request, response, next ) => {
+
+    },
+
+    completeMission: ( request, response, next ) => {
+
+    }
+  },
+
+  objective: {
+
+    create: ( request, response, next ) => {
+      const { characterName, campaignName, missionName, objectiveName, description, damage } = request.body
+
+      Character.find({ name: characterName })
+      .then( raw_character => {
+
+        const character = raw_character[0]
+        const campaign = campaignHandler.getCampaign( character.campaigns, campaignName )
+        const mission = missionHandler.getMission( campaign.missions, missionName )
+
+        const objective = new Objective({ description: description, damage: damage })
+        mission.objectives.push( objective )
+        character.save()
+      })
+      .then( response.status( 200 ).json({ status: 'success', message: `Create new objective in '${missionName}'.` }) )
+    }
   }
 
 }

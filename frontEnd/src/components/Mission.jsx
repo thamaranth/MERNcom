@@ -6,7 +6,9 @@ export default class Mission extends Component {
   constructor( props ) {
     super( props )
     this.state = {
-      name: '',
+      name: this.props.params.missionName,
+      campaign: this.props.params.campaignName,
+      character: this.props.params.charName,
       objectives: []
 
     }
@@ -22,16 +24,17 @@ export default class Mission extends Component {
       'Accept': 'application/json'
       })
     }
-
     console.log( 'Making AJAX call to database...' )
 
-    fetch( 'http://localhost:4001/campaign', fetchIsHappenning )
+    const fetchString = `http://localhost:3001/character/${this.state.character}/${this.state.campaign}/${this.state.name}`
+
+    fetch( fetchString, fetchIsHappenning )
     .then( data => data.json() )
     .then( data => {
       const objectives = []
-      const mission = data.data[0].missions[0]
-      // console.log('MISSION', mission)
-      this.setState({ name: mission.name })
+      console.log('MISSION: ', data.data)
+
+      const mission = data.data
 
       for( let i = 0; i < mission.objectives.length; i++) {
         const objective = <Objective description={mission.objectives[i].description} damage={mission.objectives[i].damage} isComplete={mission.objectives[i].isComplete} id={mission.objectives[i]._id} />

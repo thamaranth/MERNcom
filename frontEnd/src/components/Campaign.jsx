@@ -5,7 +5,8 @@ export default class Campaign extends Component {
   constructor( props ) {
     super( props )
     this.state = {
-      name: '',
+      name: this.props.params.campaignName,
+      character: this.props.params.charName,
       missionLinks: []
     }
   }
@@ -23,22 +24,24 @@ export default class Campaign extends Component {
 
     console.log( 'Making AJAX call to database...' )
 
-    fetch( 'http://localhost:4001/campaign', fetchIsHappenning )
+    const fetchString = `http://localhost:3001/character/${this.state.character}/${this.state.name}`
+    console.log(fetchString)
+    fetch( fetchString, fetchIsHappenning )
     .then( data => data.json() )
     .then( data => {
 
+      console.log("DATA: ", data)
+
       const missionLinks = []
-      const campaign = data.data[0]
+      const campaign = data.data
+      const missions = campaign.missions
 
-      this.setState({ name: campaign.name })
-
-      for (let i = 0; i < campaign.missions.length; i++) {
-        /*TODO: make mission link dynamic*/
-        const mission = <div className="link"><Link to="/character/:character/:campaign/:mission">{campaign.missions[i].name}</Link></div>
+      for (let i = 0; i < missions.length; i++) {
+        const linkTo = `/character/${this.state.character}/${this.state.name}/${missions[i].name}`
+        const mission = <div className="link"><Link to={linkTo}>{missions[i].name}</Link></div>
         missionLinks.push( mission )
       }
       this.setState({ missionLinks })
-      // console.log(this.state.missionNames)
 
       })
     }

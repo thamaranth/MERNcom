@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Character from '../Character'
 import {Link} from 'react-router'
 
 export default class CharacterSelect extends Component {
@@ -10,6 +9,7 @@ export default class CharacterSelect extends Component {
     }
   }
 
+
   componentDidMount() {
 
     const fetchIsHappenning = {
@@ -19,21 +19,34 @@ export default class CharacterSelect extends Component {
       })
     }
 
-    fetch( 'http://localhost:4001/character', fetchIsHappenning )
+    fetch( 'http://localhost:3001/characters', fetchIsHappenning )
     .then( data => data.json() )
     .then( data => {
       const characterLinks = []
-      console.log('CHARACTER', data.data[0])
-      const r_character = data.data[0]
+      console.log('CHARACTERS: ', data.data)
+      const characters = data.data
 
-      const characterLink = <div className="character-link kate-winslet"><Link to="/character/Kate">{r_character.name}</Link></div>
+      characters.forEach( character => {
+        const linkTo = `/character/${character.name}`
+        let divClass = ''
 
-      characterLinks.push( characterLink )
+        if ( character.name === 'Kate Winslet' ) {
+          divClass = 'character-link kate-winslet'
+        }
+        else if ( character.name === 'Macho Man Randy Savage' ) {
+          divClass = 'character-link macho-man-randy-savage'
+        }
+
+        const characterLink = <div className={divClass}><Link to={linkTo}>{character.name}</Link></div>
+        characterLinks.push( characterLink )
+      })
       this.setState({ characterLinks })
     })
-
-
   }
+
+    getClassName() {
+
+    }
 
   render() {
     return (
