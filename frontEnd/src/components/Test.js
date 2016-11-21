@@ -47,7 +47,7 @@ export default class Test extends Component {
               </button>
             </form>
           </div>
-      </div>
+        </div>
   )}
 }
 
