@@ -2,11 +2,23 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-color: #222;
-  /*background-image: url('https://media1.britannica.com/eb-media/53/135153-120-AD5091DA.jpg');
-  background-size: cover;*/
+  background-color: black;
   color: white;
 }
+
+.fullscreen-bg {
+    background-image: url('http://orig14.deviantart.net/2a6e/f/2009/354/3/6/warzone_by_gaius31duke.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: fixed;
+    top: 75px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -100;
+}
+
 
 .container {
   width: 100%;
@@ -26,7 +38,7 @@ body {
   margin-right: auto;
   margin-left: auto;
   padding: 10px;
-  background-color: rgba(255, 255, 255, 0.22);
+  /*background-color: rgba(255, 255, 255, 0.22);*/
   color: black;
   order: 1;
   width: 400px;
@@ -97,13 +109,6 @@ body {
   order: 2;
 }
 
-.character-link {
-  margin: auto;
-  padding: 5px;
-  width: 200px;
-  height: 60px;
-  border: solid white 2px;
-}
 
 .kate-winslet {
   background-image: url('https://downloads.2kgames.com/xcom2/blog_images/retaliation.jpg');
@@ -115,6 +120,14 @@ body {
   background-image: url('http://ll-media.tmz.com/2015/01/12/0112-macho-man-randy-savage-wwe-1200x630.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.character-link {
+  margin: auto;
+  padding: 5px;
+  width: 200px;
+  height: 60px;
+  border: solid white 2px;
 }
 
 .character-hp {
@@ -142,16 +155,6 @@ body {
   background-color: grey;
   margin-top: 10px;
 }
-
-/*.campaign-list {
-  display: flex;
-  justify-content: space-around;
-  background-color: rgba(255, 255, 255, 0.62);
-  color: black;
-  order: 1;
-  width: 400px;
-}*/
-
 
 .campaign-list {
   display: flex;
