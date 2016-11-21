@@ -36,6 +36,9 @@ export default class CharacterSelect extends Component {
         else if ( character.name === 'Macho Man Randy Savage' ) {
           divClass = 'character-link macho-man-randy-savage'
         }
+        else if ( character.name === 'Bob' ) {
+            divClass = 'character-link bob'
+        }
 
         const characterLink = <div className={divClass}><Link to={linkTo}>{character.name}</Link></div>
         characterLinks.push( characterLink )

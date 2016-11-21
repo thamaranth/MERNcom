@@ -21,6 +21,9 @@ export default class Character extends Component {
     else if ( this.state.name === 'Macho Man Randy Savage' ) {
       return 'character macho-man-randy-savage'
     }
+    else if (this.state.name === 'Bob') {
+      return 'character bob'
+    }
   }
 
   componentDidMount() {

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Objective from './Objective'
-import Boss from './Boss'
 
 export default class Mission extends Component {
   constructor( props ) {
