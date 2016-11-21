@@ -33,12 +33,12 @@ export default class Test extends Component {
           <h2>The time is now!</h2>
           <h3>Accept the truth...</h3>
           <div className="email-pass-form">
-            <form action="http://localhost:3000/login" method="post">
+            <form action="http://localhost:3001/login" method="post">
               <input type="text"
                 placeholder="Username"
                 username={this.state.username}
                 onChange={this.handleUsername} />
-              <input type="text"
+              <input type="password"
                 placeholder="Pass"
                 password={this.state.password}
                 onChange={this.handlePass} />

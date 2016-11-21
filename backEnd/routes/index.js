@@ -3,6 +3,8 @@ const router = express.Router()
 const {campaignHandler} = require('../database/campaignHandler')
 const characterHandler = require('../database/characterHandler')
 const objectiveHandler = require( '../database/objectiveHandler' )
+const userHandler = require( '../database/userHandler' )
+const passport = require('passport')
 
 router.get('/', ( request, response, next ) => {
   response.send( 'respond with a resource' )
@@ -27,5 +29,10 @@ router.get( '/character/:name', characterHandler.getOne )
 router.get( '/characters', characterHandler.getAll )
 
 router.get( '/objectives', objectiveHandler.getAll )
+
+router.post('/login', userHandler.authUser )
+// router.post('/login',
+//   passport.authenticate('local', { successRedirect: '/ChacterSelect',
+//                                    failureRedirect: 'http://localhost:3000/' }));
 
 module.exports = router

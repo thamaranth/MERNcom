@@ -3,20 +3,20 @@ body {
   padding: 0;
   font-family: sans-serif;
   background-color: black;
-  color: white;
+  color: rgb(96, 170, 45);
 }
 
 .fullscreen-bg {
-    background-image: url('http://orig14.deviantart.net/2a6e/f/2009/354/3/6/warzone_by_gaius31duke.jpg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    position: fixed;
-    top: 75px;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    overflow: hidden;
-    z-index: -100;
+  background-image: url('http://orig14.deviantart.net/2a6e/f/2009/354/3/6/warzone_by_gaius31duke.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 75px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: -100;
 }
 
 
@@ -90,8 +90,8 @@ body {
   margin-left: auto;
   margin-right: auto;
   /*border: ridge white 5px;*/
-  width: 90%;
-  height: 1000px;
+  max-width: 90%;
+  height: 350px;
   display: flex;
   flex-flow: row-reverse;
   z-index: 100;
