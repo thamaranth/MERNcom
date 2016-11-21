@@ -2,9 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import App from './App';
-import Campaign from './components/Campaign'
 import CharacterSelect from './components/pages/CharacterSelect'
-import CampaignPage from './components/CampaignPage'
 import Test from './components/Test'
 import StagePage from './components/pages/StagePage'
 

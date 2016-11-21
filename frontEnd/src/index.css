@@ -117,7 +117,13 @@ body {
 }
 
 .macho-man-randy-savage {
-  background-image: url('http://ll-media.tmz.com/2015/01/12/0112-macho-man-randy-savage-wwe-1200x630.jpg');
+  background-image: url('http://www.latinorebels.com/wp-content/uploads/2011/05/macho.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bob{
+  background-image: url('https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.tapetus.pl%2Fobrazki%2Fn%2F185650_the-elders-scrolls-v-skyrim-dovahkiin.jpg&f=1');
   background-repeat: no-repeat;
   background-size: cover;
 }
