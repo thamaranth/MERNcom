@@ -4,13 +4,12 @@ const userHandler = {
 
   authUser: ( request, response, next ) => {
     const { username, password } = request.body
+    console.log('USER: ', username)
 
-    if ( username === 'ideans' ) {
-      response.writeHead(301, {
-        Location: "http" + (request.socket.encrypted ? "s" : "") + "://" +
-        request.headers.host }
-);
-response.end();
+    if ( username === 'ideans' && password === 'opensaysme') {
+      response.redirect('http://localhost:3000/CharacterSelect')
+    } else if ( username === 'ninja' && password === 'oda' ) {
+      response.redirect('http://localhost:3000/CharacterSelect')
     } else {
       response.redirect('http://localhost:3000/')
     }

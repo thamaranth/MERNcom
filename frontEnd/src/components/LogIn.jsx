@@ -36,10 +36,12 @@ export default class Test extends Component {
             <form action="http://localhost:3001/login" method="post">
               <input type="text"
                 placeholder="Username"
+                name="username"
                 username={this.state.username}
                 onChange={this.handleUsername} />
               <input type="password"
                 placeholder="Pass"
+                name="password"
                 password={this.state.password}
                 onChange={this.handlePass} />
               <button onClick={this.handleSubmit}>
