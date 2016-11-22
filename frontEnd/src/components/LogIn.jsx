@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import '../App.css';
+// import '../App.css';
 
-import './LogInForm.css'
+import '../../public/stylesheets/LogInForm.css'
 
 export default class Test extends Component {
   constructor(props) {

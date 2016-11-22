@@ -3,17 +3,15 @@ import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import App from './App';
 import CharacterSelect from './components/pages/CharacterSelect'
-// import {Character, Campaign, Mission, CampaignPage} from 'components/'
 import Character from './components/Character'
 import Campaign from './components/Campaign'
 import Mission from './components/Mission'
 import CampaignPage from './components/CampaignPage'
 import OpeningPage from './components/pages/OpeningPage'
 import LogIn from './components/LogIn'
-// import StagePage from './components/pages/StagePage'
 
-import './index.css';
-
+import '../public/stylesheets/index.css'
+import '../public/stylesheets/characters.css'
 
 const HTMLroot = document.getElementById('root')
 

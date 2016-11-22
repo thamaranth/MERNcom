@@ -78,7 +78,22 @@ body {
   padding: 5px;
   width: 200px;
   height: 60px;
-  border: solid white 2px;
+  border: groove white 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: red;
+  margin-bottom: 5px;
+}
+
+.character-link a {
+  text-decoration: none;
+  text-align: center;
+  color: red;
+}
+
+.character-link a:hover {
+  color: blue;
 }
 
 .character-hp {
@@ -199,22 +214,4 @@ body {
   margin-right: auto;
   margin-top: 10px;
   background-position: center;
-}
-
-.kate-winslet {
-  background-image: url('https://downloads.2kgames.com/xcom2/blog_images/retaliation.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.macho-man-randy-savage {
-  background-image: url('http://www.latinorebels.com/wp-content/uploads/2011/05/macho.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.bob{
-  background-image: url('https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.tapetus.pl%2Fobrazki%2Fn%2F185650_the-elders-scrolls-v-skyrim-dovahkiin.jpg&f=1');
-  background-repeat: no-repeat;
-  background-size: cover;
 }

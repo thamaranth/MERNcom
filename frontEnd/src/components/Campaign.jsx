@@ -30,8 +30,6 @@ export default class Campaign extends Component {
     .then( data => data.json() )
     .then( data => {
 
-      console.log("DATA: ", data)
-
       const missionLinks = []
       const campaign = data.data
       const missions = campaign.missions
