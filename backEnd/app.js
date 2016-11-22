@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const passport = require('passport')
+const FacebookStrategy = require('passport-facebook').Strategy;
 
 const index = require('./routes/index')
 const users = require('./routes/users')
@@ -36,9 +37,27 @@ app.use( ( request, response, next ) => {
     next()
 })
 
+const FACEBOOK_APP_ID = '1187078024675138'
+const FACEBOOK_APP_SECRET = '02c7d2820deee6a18ba0c99da130d5f7'
+
+passport.use(new FacebookStrategy({
+    clientID: FACEBOOK_APP_ID,
+    clientSecret: FACEBOOK_APP_SECRET,
+    callbackURL: "http://localhost:3001/login/facebook/callback"
+  },
+
+  function(accessToken, refreshToken, profile, cb) {
+    User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+      return cb(err, user);
+    });
+  }
+));
 
 app.use('/', index)
 app.use('/users', users)
+
+
+
 
 // catch 404 and forward to error handler
 app.use( ( request, respond, next ) => {

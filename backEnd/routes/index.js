@@ -30,9 +30,13 @@ router.get( '/characters', characterHandler.getAll )
 
 router.get( '/objectives', objectiveHandler.getAll )
 
-router.post('/login', userHandler.authUser )
-// router.post('/login',
-//   passport.authenticate('local', { successRedirect: '/ChacterSelect',
-//                                    failureRedirect: 'http://localhost:3000/' }));
+// router.post('/login', userHandler.authUser )
+
+router.get('/login/facebook',
+  passport.authenticate('facebook'));
+
+router.get('/login/facebook/callback',
+  passport.authenticate('facebook', { failureRedirect: 'http://localhost:3000/' }),
+  ( request, response ) => { response.redirect('http://localhost:3000/CharacterSelect') })
 
 module.exports = router
