@@ -1,24 +1,90 @@
+
+* {
+  /*border: solid red 1px;*/
+  positon: relative;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 5s linear;
+  height: 80px;
+}
+
 body {
   margin: 0;
+  margin-top: 8em;
   padding: 0;
   font-family: sans-serif;
   background-color: black;
   color: rgb(96, 170, 45);
 }
 
-.fullscreen-bg {
-  background-image: url('http://orig14.deviantart.net/2a6e/f/2009/354/3/6/warzone_by_gaius31duke.jpg');
+.boss-container {
+  background-image: url('http://ih1.redbubble.net/image.207507018.0948/fc,220x200,black.u1.jpg');
   background-size: contain;
   background-repeat: no-repeat;
-  position: fixed;
-  top: 75px;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  overflow: hidden;
-  z-index: -100;
+  height: 150px;
+  width: 150px;
 }
 
+.campaign-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.campaign-link {
+  border: solid black 5px;
+  width: 170px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: grey;
+}
+
+.character {
+  position: fixed;
+  top: 0em;
+  right: 0em;;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: row-reverse;
+  z-index: 100;
+}
+
+.character-stage {
+  display: flex;
+  width: 70%;
+}
+
+.character-stats {
+  position: fixed;
+  display: flex;
+  bottom: 5%;
+  left: 44%;
+  justify-content: space-between;
+  border: solid black 2px;
+  border-radius: 30px;
+  padding: 10px;
+  background-color: rgba(9, 35, 101, 0.65);
+  width: 200px;
+  height: 55px;
+  order: 2;
+}
+
+.character-link {
+  margin: auto;
+  padding: 5px;
+  width: 200px;
+  height: 60px;
+  border: solid white 2px;
+}
+
+.character-hp {
+  border-top: solid black 3px;
+  margin-top: 10px;
+}
 
 .container {
   width: 100%;
@@ -32,17 +98,74 @@ body {
 
 }
 
+.damage {
+  background-image: url('http://newton64.ca/images/videogames/doomguy/doomfuct.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 150px;
+  width: 150px;
+}
+
+.fullscreen-bg {
+  background-image: url('http://orig14.deviantart.net/2a6e/f/2009/354/3/6/warzone_by_gaius31duke.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: fixed;
+  margin-left: auto;
+  top: 75px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: -100;
+}
+
+.link {
+  border-radius: 50px;
+  border: solid black 5px;
+  background-image: url('http://www.clker.com/cliparts/D/0/I/0/H/B/green-button-hi.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 120px;
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.link:hover {
+  background-image: url('https://openclipart.org/image/800px/svg_to_png/139483/greenbutton.png');
+  color: white;
+}
+
+.link a {
+    text-decoration: none;
+    color: rgb(11, 59, 9);
+    text-align: center;
+    /*margin: 20px;*/
+}
+
+.link a:hover {
+}
+
 .list {
   display: flex;
   flex-direction: column;
   margin-right: auto;
   margin-left: auto;
   padding: 10px;
-  /*background-color: rgba(255, 255, 255, 0.22);*/
   color: black;
   order: 1;
   width: 400px;
+}
 
+.login-button {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAY1BMVEX///86V5ogRpLx8vclSZM0U5jV2+n2+PspTJW9xdouT5acqcne4esAMooxUZc3VZlGYqFid6x1h7SZpsiyvNXFzN89Wpzj5/HT2eh7jLgMPY6Ckry5wdiLmb9ofK8ANotVbadfrs6RAAAB4ElEQVR4nO3db2+aUBiHYao4wCqsU+fa7t/3/5RLq1CnSbMh6XM8ue6XvvjFKyEFTzQtCkmSJEmSJEmSJEmSJGny5qk1OXA9S6v11MT57C6tZoSEhOEREhLGR0hIGB8hIWF8hISE8RESEsZHSEgYHyEhYXyEhITxERISxpewsFvUZf/FpnKRobBtf273/ej+eTQxWWH5uD+dvV9mJuza3d+zuQm7dnU2m5uw3p3PZiZsny9mMxPW59dobsLu4XI2L+Fyc7q3emn/o81JWDdvc4+LWfnSaGCSwvLbsLYpr15LUvhpWPvdZS6sFoSEhISE/1l9OLL4NdwPq6f+FGO8NCVhvasOv6erhrXq2PzzaGJKwpM7/cXq19GrNyJcjf5ocSvC3fjn0xsRbuvchZvsr9IveXw+fEf4kMep/jvC8bfDpITL++a178N7qprjK+Mv0qSEd8v6tae3p7by8Mr4v6SJCY9l/ORNSEhISEhISEhISEhISEhISEj4ocL+3LRpttcDkxT256bXnZP2JSmcNEJCwvgICQnjIyQkjI+QkDA+QkLC+AgJCeMjJCSMj5CQMD5CQsL4CAkJ4yMkJIyPkPBSuP6of3z/j62nFhbz1JoaKEmSJEmSJEmSJEmSJBXFH99pZBOXm5QRAAAAAElFTkSuQmCC');
+  background-size: contain;
 }
 
 .mission {
@@ -51,7 +174,7 @@ body {
   margin-right: auto;
   margin-top: 2em;
   display: flex;
-  }
+}
 
 .objective {
   border: ridge black 1px;
@@ -61,13 +184,6 @@ body {
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
-}
-.damage {
-  background-image: url('http://newton64.ca/images/videogames/doomguy/doomfuct.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 150px;
-  width: 150px;
 }
 
 .objective-complete {
@@ -85,31 +201,6 @@ body {
   background-position: center;
 }
 
-.character {
-  position: relative;
-  margin-left: auto;
-  margin-right: auto;
-  /*border: ridge white 5px;*/
-  max-width: 90%;
-  height: 350px;
-  display: flex;
-  flex-flow: row-reverse;
-  z-index: 100;
-}
-
-.character-stats {
-  display: flex;
-  justify-content: space-between;
-  border: solid black 2px;
-  border-radius: 30px;
-  padding: 10px;
-  background-color: rgba(9, 35, 101, 0.65);
-  width: 200px;
-  height: 55px;
-  order: 2;
-}
-
-
 .kate-winslet {
   background-image: url('https://downloads.2kgames.com/xcom2/blog_images/retaliation.jpg');
   background-repeat: no-repeat;
@@ -126,67 +217,4 @@ body {
   background-image: url('https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.tapetus.pl%2Fobrazki%2Fn%2F185650_the-elders-scrolls-v-skyrim-dovahkiin.jpg&f=1');
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-.character-link {
-  margin: auto;
-  padding: 5px;
-  width: 200px;
-  height: 60px;
-  border: solid white 2px;
-}
-
-.character-hp {
-  border-top: solid black 3px;
-  margin-top: 10px;
-}
-
-.campaign-link {
-  border: solid black 5px;
-  width: 170px;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: grey;
-}
-
-.link {
-  border: solid black 5px;
-  width: 170px;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: grey;
-  margin-top: 10px;
-}
-
-.campaign-list {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-* {
-  /*border: solid red 1px;*/
-  positon: relative;
-}
-
-.boss-container {
-  background-image: url('http://ih1.redbubble.net/image.207507018.0948/fc,220x200,black.u1.jpg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 150px;
-  width: 150px;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 5s linear;
-  height: 80px;
-}
-
-.login-button {
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAY1BMVEX///86V5ogRpLx8vclSZM0U5jV2+n2+PspTJW9xdouT5acqcne4esAMooxUZc3VZlGYqFid6x1h7SZpsiyvNXFzN89Wpzj5/HT2eh7jLgMPY6Ckry5wdiLmb9ofK8ANotVbadfrs6RAAAB4ElEQVR4nO3db2+aUBiHYao4wCqsU+fa7t/3/5RLq1CnSbMh6XM8ue6XvvjFKyEFTzQtCkmSJEmSJEmSJEmSJGny5qk1OXA9S6v11MT57C6tZoSEhOEREhLGR0hIGB8hIWF8hISE8RESEsZHSEgYHyEhYXyEhITxERISxpewsFvUZf/FpnKRobBtf273/ej+eTQxWWH5uD+dvV9mJuza3d+zuQm7dnU2m5uw3p3PZiZsny9mMxPW59dobsLu4XI2L+Fyc7q3emn/o81JWDdvc4+LWfnSaGCSwvLbsLYpr15LUvhpWPvdZS6sFoSEhISE/1l9OLL4NdwPq6f+FGO8NCVhvasOv6erhrXq2PzzaGJKwpM7/cXq19GrNyJcjf5ocSvC3fjn0xsRbuvchZvsr9IveXw+fEf4kMep/jvC8bfDpITL++a178N7qprjK+Mv0qSEd8v6tae3p7by8Mr4v6SJCY9l/ORNSEhISEhISEhISEhISEhISEj4ocL+3LRpttcDkxT256bXnZP2JSmcNEJCwvgICQnjIyQkjI+QkDA+QkLC+AgJCeMjJCSMj5CQMD5CQsL4CAkJ4yMkJIyPkPBSuP6of3z/j62nFhbz1JoaKEmSJEmSJEmSJEmSJBXFH99pZBOXm5QRAAAAAElFTkSuQmCC');
-  background-size: contain;
 }

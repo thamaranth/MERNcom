@@ -23,11 +23,10 @@ export default class CharacterSelect extends Component {
     .then( data => data.json() )
     .then( data => {
       const characterLinks = []
-      console.log('CHARACTERS: ', data.data)
       const characters = data.data
 
       characters.forEach( character => {
-        const linkTo = `/character/${character.name}`
+        const linkTo = `/${character.name}`
         let divClass = ''
 
         if ( character.name === 'Kate Winslet' ) {
@@ -36,8 +35,8 @@ export default class CharacterSelect extends Component {
         else if ( character.name === 'Macho Man Randy Savage' ) {
           divClass = 'character-link macho-man-randy-savage'
         }
-        else if ( character.name === 'Bob' ) {
-            divClass = 'character-link bob'
+        else if ( character.name === 'Sean Connery' ) {
+            divClass = 'character-link sean-connery'
         }
 
         const characterLink = <div className={divClass}><Link to={linkTo}>{character.name}</Link></div>

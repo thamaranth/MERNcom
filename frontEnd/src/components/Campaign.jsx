@@ -37,7 +37,7 @@ export default class Campaign extends Component {
       const missions = campaign.missions
 
       for (let i = 0; i < missions.length; i++) {
-        const linkTo = `/character/${this.state.character}/${this.state.name}/${missions[i].name}`
+        const linkTo = `/${this.state.character}/${this.state.name}/${missions[i].name}`
         const mission = <div className="link"><Link to={linkTo}>{missions[i].name}</Link></div>
         missionLinks.push( mission )
       }

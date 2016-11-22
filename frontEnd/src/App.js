@@ -7,8 +7,9 @@ import { Link } from "react-router"
 class App extends Component {
   render() {
     return (
-      <div className="fullscreen-bg">
       <div className="App">
+        <div className="fullscreen-bg">
+        </div>
         <div className="App-header">
           <Link to="/">
           <img src="http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/green-grunge-clipart-icons-signs/092839-green-grunge-clipart-icon-signs-warning-biohazard.png" className="App-logo" alt="logo" />
@@ -20,7 +21,6 @@ class App extends Component {
             <div className="wrapper">
               {this.props.children}
             </div>
-        </div>
         </div>
         );
         }

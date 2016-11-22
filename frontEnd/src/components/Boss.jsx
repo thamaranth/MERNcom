@@ -14,7 +14,6 @@ export default class Boss extends Component {
     }
   }
 
-
   componentDidMount() {
 
     const fetchIsHappenning = {
@@ -31,11 +30,6 @@ export default class Boss extends Component {
       this.setState({ id: missions[0]._id, name: missions[0].name, boss_name: missions[0].boss_name, boss_hp: missions[0].boss_hp, img_url: missions[0].img_url })
       console.log("STATE:", this.state.name )
     })
-
-
-
-
-
   }
 
   render() {

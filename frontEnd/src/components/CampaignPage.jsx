@@ -29,7 +29,7 @@ export default class CampaignPage extends Component {
       const campaigns = character.campaigns
       const campaign_links = []
       for ( let i = 0; i < campaigns.length; i++ ) {
-        const linkTo = `/character/${this.state.characterName}/${campaigns[i].name}`
+        const linkTo = `/${this.state.characterName}/${campaigns[i].name}`
         const campaignLink = <Link to={linkTo}>{campaigns[i].name}</Link>
         campaign_links.push( campaignLink )
       }
