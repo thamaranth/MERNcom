@@ -37,8 +37,8 @@ app.use( ( request, response, next ) => {
     next()
 })
 
-const FACEBOOK_APP_ID = '1187078024675138'
-const FACEBOOK_APP_SECRET = '02c7d2820deee6a18ba0c99da130d5f7'
+const FACEBOOK_APP_ID = '1187088631340744'
+const FACEBOOK_APP_SECRET = 'b23c72d939f481b11ede14bdc74bc9e9'
 
 passport.use(new FacebookStrategy({
     clientID: FACEBOOK_APP_ID,
