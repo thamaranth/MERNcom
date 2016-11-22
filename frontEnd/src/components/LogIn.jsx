@@ -48,6 +48,10 @@ export default class Test extends Component {
                 Submit
               </button>
             </form>
+
+            <a href="http://localhost:3000/CharacterSelect">
+            <button className="login-button"></button>
+          </a>
           </div>
         </div>
   )}
