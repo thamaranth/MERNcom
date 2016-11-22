@@ -49,7 +49,7 @@ export default class Test extends Component {
               </button>
             </form>
 
-            <a href="http://localhost:3000/CharacterSelect">
+            <a href="http://localhost:3001/login/facebook">
             <button className="login-button"></button>
           </a>
           </div>

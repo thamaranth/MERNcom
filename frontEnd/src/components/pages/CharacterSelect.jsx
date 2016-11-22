@@ -53,7 +53,7 @@ export default class CharacterSelect extends Component {
   render() {
     return (
       <div>
-        <div className="list">
+        <div className="character-list">
           {this.state.characterLinks.map( character => character )}
             </div>
       </div>

@@ -22,8 +22,8 @@ body {
   background-image: url('http://ih1.redbubble.net/image.207507018.0948/fc,220x200,black.u1.jpg');
   background-size: contain;
   background-repeat: no-repeat;
-  height: 150px;
-  width: 150px;
+  height: 100px;
+  width: 100px;
 }
 
 .campaign-list {
@@ -40,6 +40,11 @@ body {
   justify-content: center;
   align-items: center;
   background-color: grey;
+}
+
+.campaign-page {
+  display: flex;
+  flex-direction: row;
 }
 
 .character {
@@ -117,8 +122,8 @@ body {
   background-image: url('http://newton64.ca/images/videogames/doomguy/doomfuct.png');
   background-size: contain;
   background-repeat: no-repeat;
-  height: 150px;
-  width: 150px;
+  height: 100px;
+  width: 100px;
 }
 
 .fullscreen-bg {
@@ -165,6 +170,7 @@ body {
 }
 
 .link a:hover {
+
 }
 
 .list {
@@ -172,10 +178,12 @@ body {
   flex-direction: column;
   margin-right: auto;
   margin-left: auto;
+  margin-top: 20%;
   padding: 10px;
   color: black;
   order: 1;
-  width: 400px;
+  width: 80%;
+  height: inherit;
 }
 
 .login-button {
@@ -189,29 +197,51 @@ body {
   margin-right: auto;
   margin-top: 2em;
   display: flex;
+  flex-direction: row;
+}
+
+.missions {
+  margin-top: 10px;
 }
 
 .objective {
-  border: ridge black 1px;
-  width: 100px;
   background-color: white;
   color: black;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 10px;
+  border: ridge black 1px;
+  margin: 10px;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 2px;
+}
+
+.objective h5 {
+  margin: 0px;
+  margin-top: 3px;
+  padding: 0px;
+}
+
+.objectives {
+    width: 80%;
+}
+
+.objective-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .objective-complete {
   /*TODO: fix image sizing */
+  background-color: black;
   background-image: url('http://4.bp.blogspot.com/-ohqlppNJIHo/UBGGVo9rTcI/AAAAAAAAAGA/ANMtDcu5dDw/s1600/comp.jpg');
   background-size: contain;
   background-repeat: no-repeat;
-  border: ridge black 1px;
-  width: 100px;
-  background-color: black;
-  color: white;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 10px;
   background-position: center;
+  color: white;
+  width: 100px;
 }

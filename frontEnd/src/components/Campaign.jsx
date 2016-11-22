@@ -7,7 +7,8 @@ export default class Campaign extends Component {
     this.state = {
       name: this.props.params.campaignName,
       character: this.props.params.charName,
-      missionLinks: []
+      missionLinks: [],
+      index: 0
     }
   }
 
@@ -25,7 +26,6 @@ export default class Campaign extends Component {
     console.log( 'Making AJAX call to database...' )
 
     const fetchString = `http://localhost:3001/character/${this.state.character}/${this.state.name}`
-    console.log(fetchString)
     fetch( fetchString, fetchIsHappenning )
     .then( data => data.json() )
     .then( data => {
@@ -35,8 +35,8 @@ export default class Campaign extends Component {
       const missions = campaign.missions
 
       for (let i = 0; i < missions.length; i++) {
-        const linkTo = `/${this.state.character}/${this.state.name}/${missions[i].name}`
-        const mission = <div className="link"><Link to={linkTo}>{missions[i].name}</Link></div>
+        const linkTo = `/${this.state.character}/campaigns/${this.state.name}/${missions[i].name}`
+        const mission = <div className="link"><Link to={linkTo} key={i}>{missions[i].name}</Link></div>
         missionLinks.push( mission )
       }
       this.setState({ missionLinks })
@@ -48,7 +48,7 @@ export default class Campaign extends Component {
     return (
       <div className="campaign">
         <div className="campaign-title"><h3>{this.state.name}</h3></div>
-        <div className="mission-list">
+        <div className="missions list">
           {this.state.missionLinks.map( mission => mission )}
         </div>
       </div>

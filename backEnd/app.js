@@ -21,7 +21,7 @@ app.use( bodyParser.json() )
 app.use( bodyParser.urlencoded({ extended: false }) )
 app.use( cookieParser() )
 app.use( express.static(path.join(__dirname, 'public')) )
-app.use( session({ secret: 'keyboard cat' }) )
+// app.use( session({ secret: 'keyboard cat' }) )
 app.use( passport.initialize() )
 app.use( passport.session() )
 
@@ -40,18 +40,27 @@ app.use( ( request, response, next ) => {
 const FACEBOOK_APP_ID = '1187088631340744'
 const FACEBOOK_APP_SECRET = 'b23c72d939f481b11ede14bdc74bc9e9'
 
-passport.use(new FacebookStrategy({
+passport.use( new FacebookStrategy({
+
     clientID: FACEBOOK_APP_ID,
     clientSecret: FACEBOOK_APP_SECRET,
     callbackURL: "http://localhost:3001/login/facebook/callback"
   },
 
-  function(accessToken, refreshToken, profile, cb) {
-    User.findOrCreate({ facebookId: profile.id }, function (err, user) {
-      return cb(err, user);
-    });
+  ( accessToken, refreshToken, profile, cb) => {
+    //User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+      return cb( null, profile );
+    //});
   }
 ));
+
+passport.serializeUser(function(user, cb) {
+  cb(null, user);
+});
+
+passport.deserializeUser(function(obj, cb) {
+  cb(null, obj);
+});
 
 app.use('/', index)
 app.use('/users', users)
