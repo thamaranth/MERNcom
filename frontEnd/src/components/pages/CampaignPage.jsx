@@ -50,7 +50,7 @@ export default class CampaignPage extends Component {
             {this.state.campaign_links.map( link => <div className='link' key={'modalPicker'+(this.state.componentIndex++)}>{link}</div> )}
           </div>
         </div>
-          <div>
+          <div className="campign">
           {this.props.children}
         </div>
       </div>

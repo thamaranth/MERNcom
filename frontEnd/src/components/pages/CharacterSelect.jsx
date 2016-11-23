@@ -25,6 +25,8 @@ export default class CharacterSelect extends Component {
       const characterLinks = []
       const characters = data.data
 
+      let index = 0
+
       characters.forEach( character => {
         const linkTo = `/${character.name}`
         let divClass = ''
@@ -38,8 +40,8 @@ export default class CharacterSelect extends Component {
         else if ( character.name === 'Sean Connery' ) {
             divClass = 'character-link sean-connery'
         }
-
-        const characterLink = <div className={divClass}><Link to={linkTo}>{character.name}</Link></div>
+        index++
+        const characterLink = <div className={divClass} key={index}><Link to={linkTo}>{character.name}</Link></div>
         characterLinks.push( characterLink )
       })
       this.setState({ characterLinks })

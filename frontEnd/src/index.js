@@ -16,7 +16,7 @@ ReactDOM.render(
   <Router history={browserHistory}>
 
     <Route path="/" component={App}>
-      <IndexRoute component={LogIn}></IndexRoute>
+      <IndexRoute components={LogIn}> </IndexRoute>
       <Route path="/CharacterSelect" component={CharacterSelect}></Route>
     </Route>
 
