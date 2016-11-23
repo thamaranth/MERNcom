@@ -23,11 +23,12 @@ export default class CharacterSelect extends Component {
     .then( data => data.json() )
     .then( data => {
       const characterLinks = []
-      console.log('CHARACTERS: ', data.data)
       const characters = data.data
 
+      let index = 0
+
       characters.forEach( character => {
-        const linkTo = `/character/${character.name}`
+        const linkTo = `/${character.name}`
         let divClass = ''
 
         if ( character.name === 'Kate Winslet' ) {
@@ -36,11 +37,11 @@ export default class CharacterSelect extends Component {
         else if ( character.name === 'Macho Man Randy Savage' ) {
           divClass = 'character-link macho-man-randy-savage'
         }
-        else if ( character.name === 'Bob' ) {
-            divClass = 'character-link bob'
+        else if ( character.name === 'Sean Connery' ) {
+            divClass = 'character-link sean-connery'
         }
-
-        const characterLink = <div className={divClass}><Link to={linkTo}>{character.name}</Link></div>
+        index++
+        const characterLink = <div className={divClass} key={index}><Link to={linkTo}>{character.name}</Link></div>
         characterLinks.push( characterLink )
       })
       this.setState({ characterLinks })
@@ -54,7 +55,7 @@ export default class CharacterSelect extends Component {
   render() {
     return (
       <div>
-        <div className="list">
+        <div className="character-list">
           {this.state.characterLinks.map( character => character )}
             </div>
       </div>

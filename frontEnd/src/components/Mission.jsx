@@ -40,28 +40,18 @@ export default class Mission extends Component {
           objectives.push( objective )
             }
       this.setState({ objectives })
-      // console.log(this.state.objectives[0].description)
-
-
-
       })
-
   }
-
 
   render() {
     const obj1 = this.state.objectives
 
-    // const obj1_description = obj1.description
-    // const obj1_damage = obj1.damage
-
     return (
-      <div className="mission">
-        <div className="objective-container">
+      // <div >
+        <div className="objectives container">
           {obj1.map( ( objective ) => <div key={ objective._id} > {objective} </div> )}
           </div>
-          {Objective}
-        </div>
+        // </div>
 
     )
   }

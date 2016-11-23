@@ -6,7 +6,8 @@ export default class CampaignPage extends Component {
     super( props )
     this.state = {
       characterName: this.props.params.charName,
-      campaign_links: []
+      campaign_links: [],
+      componentIndex: 0
     }
   }
 
@@ -29,7 +30,7 @@ export default class CampaignPage extends Component {
       const campaigns = character.campaigns
       const campaign_links = []
       for ( let i = 0; i < campaigns.length; i++ ) {
-        const linkTo = `/character/${this.state.characterName}/${campaigns[i].name}`
+        const linkTo = `/${this.state.characterName}/campaigns/${campaigns[i].name}`
         const campaignLink = <Link to={linkTo}>{campaigns[i].name}</Link>
         campaign_links.push( campaignLink )
       }
@@ -41,11 +42,14 @@ export default class CampaignPage extends Component {
 
   render(){
     return (
-      <div>
-        <h1> You deserve the world </h1>
+      <div className="campaign-page">
+        <div>
+          <h1> You deserve the world </h1>
         <div className="link-list">
-            {this.state.campaign_links.map( link => <div className='link'>{link}</div> )}
+            {this.state.campaign_links.map( link => <div className='link' key={'modalPicker'+(this.state.componentIndex++)}>{link}</div> )}
           </div>
         </div>
+          <div>{this.props.children}</div>
+      </div>
     )}
   }

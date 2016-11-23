@@ -36,6 +36,7 @@ router.get('/login/facebook',
   passport.authenticate('facebook'));
 
 router.get('/login/facebook/callback',
+  
   passport.authenticate('facebook', { failureRedirect: 'http://localhost:3000/' }),
   ( request, response ) => { response.redirect('http://localhost:3000/CharacterSelect') })
 

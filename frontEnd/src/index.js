@@ -3,21 +3,26 @@ import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import App from './App';
 import CharacterSelect from './components/pages/CharacterSelect'
-import LogIn from './components/LogIn'
+import Character from './components/Character'
 import StagePage from './components/pages/StagePage'
+import LogIn from './components/LogIn'
 
-import './index.css';
-
+import '../public/stylesheets/index.css'
+import '../public/stylesheets/characters.css'
 
 const HTMLroot = document.getElementById('root')
 
 ReactDOM.render(
   <Router history={browserHistory}>
+
     <Route path="/" component={App}>
-      <IndexRoute component={LogIn}></IndexRoute>
-      {/* <Route path="/KATE/CampaignPage" component={CampaignPage}></Route> */}
+      <IndexRoute components={LogIn}> </IndexRoute>
       <Route path="/CharacterSelect" component={CharacterSelect}></Route>
-      <Route path="/character/:character" component={StagePage}></Route>
     </Route>
+
+    <Route path="/:charName" component={Character}>
+      <Route path="/:charName/campaigns" component={StagePage}></Route>
+    </Route>
+
   </Router>,
     HTMLroot)

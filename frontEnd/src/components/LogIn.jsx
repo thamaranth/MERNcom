@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import '../App.css';
+// import '../App.css';
 
-import './LogInForm.css'
+import '../../public/stylesheets/LogInForm.css'
 
 export default class Test extends Component {
   constructor(props) {
@@ -37,17 +37,21 @@ export default class Test extends Component {
               <input type="text"
                 placeholder="Username"
                 name="username"
-                username={this.state.username}
+                // username={this.state.username}
                 onChange={this.handleUsername} />
               <input type="password"
                 placeholder="Pass"
                 name="password"
-                password={this.state.password}
+                // password={this.state.password}
                 onChange={this.handlePass} />
               <button onClick={this.handleSubmit}>
                 Submit
               </button>
             </form>
+
+            <a href="http://localhost:3001/login/facebook">
+            <button className="login-button"></button>
+          </a>
           </div>
         </div>
   )}

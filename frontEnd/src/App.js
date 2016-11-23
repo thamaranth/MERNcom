@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
-import logo from './logo.svg'
-import './App.css'
 import { Link } from "react-router"
 
+import '../public/stylesheets/App.css'
 
-class App extends Component {
+export default class App extends Component {
   render() {
     return (
-      <div className="fullscreen-bg">
       <div className="App">
+        <div className="fullscreen-bg">
+        </div>
         <div className="App-header">
           <Link to="/">
           <img src="http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/green-grunge-clipart-icons-signs/092839-green-grunge-clipart-icon-signs-warning-biohazard.png" className="App-logo" alt="logo" />
@@ -21,9 +21,6 @@ class App extends Component {
               {this.props.children}
             </div>
         </div>
-        </div>
         );
         }
 }
-
-export default App

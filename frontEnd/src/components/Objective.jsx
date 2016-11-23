@@ -21,25 +21,20 @@ export default class Objective extends Component {
     } else {
       return 'damage'
     }
-
   }
-
 
   clickHandler() {
 
     if ( this.state.status === 'objective' ){
-      this.setState({ status: 'objective-complete', isComplete: true })
+      this.setState({ status: 'objective-complete objective', isComplete: true })
     } else {
       this.setState({ status: 'objective', isComplete: false })
     }
-
   }
 
   render() {
-    console.log("Lets do another test:" , this.state.isComplete)
-    console.log("this shiz is weird", this.damageHandler())
     return (
-      <div>
+      <div className="objective-block">
       <div className={this.state.status} onClick={this.clickHandler} id={this.state.id}>
         <h5>{this.state.description}</h5>
         <h5>{this.state.damage}</h5>
