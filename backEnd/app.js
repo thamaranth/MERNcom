@@ -9,9 +9,7 @@ const cors = require('cors')
 const passport = require('passport')
 const FacebookStrategy = require('passport-facebook').Strategy;
 const LocalStrategy = require('passport-local').Strategy;
-
 const User = require('./user');
-
 const index = require('./routes/index')
 const users = require('./routes/users')
 
@@ -39,87 +37,79 @@ app.use( ( request, response, next ) => {
 
     next()
 })
+// 
+// module.exports = passport => {
+//
+// }
 
-module.exports = passport => {
-  passport.serializeUser(function(user, done) {
-      done(null, user.id);
-});
 
-passport.deserializeUser(function(id, done) {
-    User.findById(id, function(err, user) {
-        done(err, user);
-    });
-});
 
 passport.use('local-login', new LocalStrategy({
-       // by default, local strategy uses username and password, we will override with email
-       usernameField : 'email',
-       passwordField : 'password',
-       passReqToCallback : true // allows us to pass back the entire request to the callback
-   },
-function(req, email, password, done) {
+         // by default, local strategy uses username and password, we will override with email
+         usernameField : 'email',
+         passwordField : 'password',
+         passReqToCallback : true // allows us to pass back the entire request to the callback
+       },
+  function( req, email, password, done) {
 
-   User.findOne({ 'local.email' : email }, function(err, user) {
+     User.findOne({ 'local.email' : email }, function(err, user) {
 
-     if (err)
-return done(err);
+       if ( error ) { return done( error ) }
 
-if (!user)
-return done(null, false, req.flash('loginMessage', 'No user found.'));
+      if ( !user ) { return done(null, false, req.flash('loginMessage', 'No user found.')) }
 
-if (!user.validPassword(password))
-return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
+      if ( !user.validPassword(password) ) { return done( null, false, req.flash( 'loginMessage', 'Oops! Wrong password.' )) }
 
-return done(null, user);
-       });
-
-}));
+      return done(null, user)
+      })
+}))
 
 const FACEBOOK_APP_ID = '1187088631340744'
 const FACEBOOK_APP_SECRET = 'b23c72d939f481b11ede14bdc74bc9e9'
 
 passport.use( new FacebookStrategy({
 
-    clientID: FACEBOOK_APP_ID,
-    clientSecret: FACEBOOK_APP_SECRET,
-    callbackURL: "http://localhost:3001/login/facebook"
+  clientID: FACEBOOK_APP_ID,
+  clientSecret: FACEBOOK_APP_SECRET,
+  callbackURL: "http://localhost:3001/login/facebook/callback"
   },
 
-  ( accessToken, refreshToken, profile, done) => {
-    //User.findOrCreate({ facebookId: profile.id }, function (err, user) {
-    process.nextTick(function() {
+  ( token, refreshToken, profile, done) => {
+    process.nextTick( () => {
+      console.log("PROFILE: ", profile)
 
- User.findOne({ 'facebook.id' : profile.id }, function(err, user) {
+     User.findOne({ 'facebook.id' : profile.id }, ( error, user ) => {
+       if ( error ) { return done( error ) }
 
-   if (err)
-return done(err);
+      if ( user ) { return done( null, user ) }
+      else {
+        var newUser = new User();
 
-if (user) {
-                  return done(null, user);
-} else {
+        newUser.facebook.id    = profile.id;
+        newUser.facebook.token = token;
+        newUser.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName;
+        //newUser.facebook.email = profile.emails[0].value;
 
-  var newUser = new User();
+        newUser.save( ( error ) => {
+          if ( error ) { throw error }
+          return done( null, newUser )
+          })
+        }
 
-  newUser.facebook.id    = profile.id;
-  newUser.facebook.token = token;
-  newUser.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName;
-  newUser.facebook.email = profile.emails[0].value;
+      })
+    })
 
-  newUser.save(function(err) {
-                        if (err)
-throw err;
+  }))
 
-return done(null, newUser);
-                   });
-               }
+passport.serializeUser( (user, done) => {
+    done( null, user.id )
+})
 
-           });
-       });
-
-   }));
-
-};
-
+passport.deserializeUser(function(id, done) {
+    User.findById(id, function(err, user) {
+        done(err, user);
+    })
+})
 
 app.use('/', index)
 app.use('/users', users)
