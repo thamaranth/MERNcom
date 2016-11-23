@@ -22,8 +22,6 @@ ReactDOM.render(
 
     <Route path="/:charName" component={Character}>
       <Route path="/:charName/campaigns" component={StagePage}></Route>
-      {/* <Route path="/:charName/:campaignName" component={Campaign}></Route>
-      <Route path="/:charName/:campaignName/:missionName" component={Mission}></Route> */}
     </Route>
 
   </Router>,

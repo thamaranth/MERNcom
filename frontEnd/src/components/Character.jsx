@@ -53,9 +53,6 @@ export default class Character extends Component {
         <div className="list">
           {this.props.children}
         </div>
-      <div className='campaign-select'>
-        {this.state.campaign_link}
-      </div>
         <div className='character-stats'>
           <div>{this.state.name}</div>
           <div>HP
@@ -63,7 +60,10 @@ export default class Character extends Component {
           </div>
         </div>
         <div className="nav-bar">
-          <div><a href="http://localhost:3000/CharacterSelect">CHARACTERS</a></div>
+          <div className="link"><a href="http://localhost:3000/CharacterSelect">CHARACTERS</a></div>
+          <div className='campaign-select'>
+            {this.state.campaign_link}
+          </div>
         </div>
       </div>
     )

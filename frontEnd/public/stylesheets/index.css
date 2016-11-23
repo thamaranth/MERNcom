@@ -1,7 +1,12 @@
 
 * {
-  border: solid red 1px;
+  /*border: solid red 1px;*/
   positon: relative;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0px;
+  padding: 0px;
 }
 
 .App-logo {
@@ -143,8 +148,8 @@ body {
 
 .link {
   border-radius: 50px;
-  border: solid black 5px;
-  background-image: url('http://www.clker.com/cliparts/D/0/I/0/H/B/green-button-hi.png');
+  border: ridge white 2px;
+  background-image: url('http://www.wp-handyhints.com/wp-content/gallery/emptyblank-buttons-500x227/blank-empty-button-aqua-silver-999999-500x227.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -158,8 +163,9 @@ body {
 }
 
 .link:hover {
-  background-image: url('https://openclipart.org/image/800px/svg_to_png/139483/greenbutton.png');
+  /*background-image: url('https://openclipart.org/image/800px/svg_to_png/139483/greenbutton.png');*/
   color: white;
+  border: groove grey 2px;
 }
 
 .link a {
@@ -169,11 +175,9 @@ body {
     /*margin: 20px;*/
 }
 
-.link a:hover {
-
-}
-
 .list {
+  background-color: rgba(216, 223, 220, 0.4);
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   margin-right: auto;
