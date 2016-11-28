@@ -27,21 +27,27 @@ export default class Objective extends Component {
 
     if ( this.state.status === 'objective' ){
       this.setState({ status: 'objective-complete objective', isComplete: true })
+      this.props.finishObjective()
     } else {
       this.setState({ status: 'objective', isComplete: false })
     }
+
+  }
+
+  componentWilUnmount() {
+
   }
 
   render() {
     return (
       <div className="objective-block">
       <div className={this.state.status} onClick={this.clickHandler} id={this.state.id}>
-        <h5>{this.state.description}</h5>
-        <h5>{this.state.damage}</h5>
+        <strong>{this.state.description}</strong>
+        <strong>{this.state.damage}</strong>
       </div>
-      <div className={this.damageHandler()}>
+      {/* <div className={this.damageHandler()}>
         <Boss />
-      </div>
+      </div> */}
     </div>
     )
   }

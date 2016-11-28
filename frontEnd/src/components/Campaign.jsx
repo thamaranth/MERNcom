@@ -36,7 +36,7 @@ export default class Campaign extends Component {
 
       for (let i = 0; i < missions.length; i++) {
         const linkTo = `/${this.state.character}/campaigns/${this.state.name}/${missions[i].name}`
-        const mission = <div className="link"><Link to={linkTo} key={i}>{missions[i].name}</Link></div>
+        const mission = <Link to={linkTo}>{missions[i].name}</Link>
         missionLinks.push( mission )
       }
       this.setState({ missionLinks })
@@ -49,7 +49,7 @@ export default class Campaign extends Component {
       <div className="campaign">
         <div className="campaign-title"><h3>{this.state.name}</h3></div>
         <div className="missions list">
-          {this.state.missionLinks.map( mission => mission )}
+          {this.state.missionLinks.map( ( mission, index ) => <div className="link" key={index}>{mission}</div> )}
         </div>
       </div>
     )
