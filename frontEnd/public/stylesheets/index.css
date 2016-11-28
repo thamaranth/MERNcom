@@ -31,6 +31,19 @@ body {
   width: 100px;
 }
 
+.boss-damage {
+  background-image: url('http://newton64.ca/images/videogames/doomguy/doomfuct.png');
+  /*background-size: contain;
+  background-repeat: no-repeat;
+  height: 100px;
+  width: 100px;
+  */
+}
+
+.boss-dead {
+  background-image: url('https://s3.amazonaws.com/colorslive/jpg_512x512/767309-A43Xf_m2FJrz0_Or.jpg');
+}
+
 .campaign-list {
   display: flex;
   flex-direction: column;
@@ -111,6 +124,7 @@ body {
   margin-top: 10px;
 }
 
+
 .container {
   width: 100%;
   margin-left: auto;
@@ -123,13 +137,6 @@ body {
 
 }
 
-.damage {
-  background-image: url('http://newton64.ca/images/videogames/doomguy/doomfuct.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 100px;
-  width: 100px;
-}
 
 .fullscreen-bg {
   background-image: url('http://orig14.deviantart.net/2a6e/f/2009/354/3/6/warzone_by_gaius31duke.jpg');
@@ -182,7 +189,7 @@ body {
   flex-direction: column;
   margin-right: auto;
   margin-left: auto;
-  margin-top: 20%;
+  margin-top: 80px;
   padding: 10px;
   color: black;
   order: 1;
@@ -220,6 +227,7 @@ body {
   align-items: center;
   flex-direction: column;
   padding: 2px;
+  font-size: 75%;
 }
 
 .objective h5 {
